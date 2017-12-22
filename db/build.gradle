@@ -1,0 +1,52 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.9.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+group = 'ee.e-sport.spring2018'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile('org.flywaydb:flyway-core')
+	compile('org.springframework.boot:spring-boot-starter-jooq')
+	compile('org.jooq:jooq-codegen')
+	compile('org.jooq:jooq-meta')
+	compile('org.mariadb.jdbc:mariadb-java-client:2.2.0')
+	compileOnly('org.springframework.boot:spring-boot-configuration-processor')
+	compileOnly('org.projectlombok:lombok')
+	testCompile('org.springframework. boot:spring-boot-starter-test')
+}
+
+clean.doFirst {
+	delete '' + projectDir + '/src/generated/java/'
+}
+
+bootRun.systemProperties = System.properties
+bootRun.systemProperties['user.dir'] = projectDir
+bootRun.systemProperties['spring.config.location'] = 'file:' + rootProject.projectDir + '/config/'
+
+task compileGenerated(type: JavaCompile, dependsOn: 'bootRun') {
+	source = fileTree(dir: 'src/generated/java', include: '**/*.java')
+	destinationDir = file('build/classes/java/main')
+	classpath = sourceSets.main.compileClasspath
+}
+
+classes.finalizedBy bootRun
+bootRun.finalizedBy compileGenerated
+

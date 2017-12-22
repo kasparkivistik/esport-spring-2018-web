@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <title>TTÜ e-Sport</title>
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <link rel="apple-touch-icon" href="/images/favicon2.png"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato:700i" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        !function(n){var t=null;t=document.addEventListener?function(n,t,i){return n.addEventListener(t,i,!1)}:document.attachEvent?function(n,t,i){n.attachEvent("on"+t,i)}:function(n,t,i){n["on"+t]=i},n.flowtype=function(i,o){o.maximum=o.maximum||9999,o.minimum=o.minimum||1,o.maxFont=o.maxFont||9999,o.minFont=o.minFont||1,o.fontRatio=o.fontRatio||35,o.lineRatio=o.lineRatio||1.45,changes=function(n){var t=n.clientWidth,i=(t>o.maximum?o.maximum:t<o.minimum?o.minimum:t)/o.fontRatio,e=i>o.maxFont?o.maxFont:i<o.minFont?o.minFont:i;n.style.fontSize=e+"px",n.style.lineHeight=e*o.lineRatio+"px"},i.updateFlowType=function(){changes(i)},t(n,"resize",i.updateFlowType),i.updateFlowType(),n.flowtype.addEvent=t}}(window);
+    </script>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+        body {
+            font-family: Lato, Arial, sans-serif;
+            overflow: hidden;
+        } .main-container {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #background {
+            background: #E6E6E6 url("images/background.png");
+            background-size: auto 125%;
+        }
+        .main-content {
+            padding: 50px 50px 200px;
+            max-width: 860px;
+            text-align: center;
+        }
+        .logo {
+            width: 100%;
+            height: auto;
+            margin-bottom: 80px;
+        }
+        .coming-soon-container {
+            display: inline-block;
+            padding: 25px 60px;
+            background: #710835 linear-gradient(45deg, #710835, #951049);
+            -webkit-clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+            clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+        }
+        .coming-soon {
+            font-weight: bold;
+            font-style: italic;
+            text-transform: uppercase;
+            color: #EBEBEB;
+            margin: 0;
+            font-size: 42px;
+        }
+        #parallax-container {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        .parallax-layer {
+            height: 100%;
+            width: 100%;
+            padding: 100px;
+            margin: -100px;
+        }
+        @media (max-width: 719px) {
+            .main-content {
+                padding: 40px;
+            }
+            .logo {
+                margin-bottom: 40px;
+            }
+            .coming-soon {
+                font-size: 28px;
+            }
+        }
+        @media (max-width: 599px) {
+            .coming-soon-container {
+                padding: 20px 50px;
+            }
+            .coming-soon {
+                font-size: 24px;
+            }
+        }
+        @media (max-width: 479px) {
+            .coming-soon-container {
+                padding: 20px 30px;
+            }
+            .coming-soon {
+                font-size: 14px;
+            }
+        }
+    </style>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111484189-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-111484189-1');
+    </script>
+</head>
+<body>
+    <div id="parallax-container">
+<!--
+        <div class="parallax-layer" id="background" data-depth="-0.0"></div>
+        <div class="parallax-layer" id="particles" data-depth="0.0"></div>
+        <div class="parallax-layer" data-depth="0.0">
+-->
+        <div class="parallax-layer" id="background" data-depth="-0.05"></div>
+        <div class="parallax-layer" id="particles" data-depth="0.1"></div>
+        <div class="parallax-layer" data-depth="0.25">
+            <div class="main-container">
+                <div class="main-content">
+                    <img class="logo" src="images/logo.svg" alt="TTÜ e-Sport"/>
+                    <div id="coming-soon" class="coming-soon-container">
+                        <h1 class="coming-soon">
+                            Coming February 2018!
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        new Parallax(document.getElementById("parallax-container"), {
+            limitX: 100,
+            limitY: 100,
+            frictionX: 0.2,
+            frictionY: 0.2
+        });
+        particlesJS.load('particles', 'particles.json', function() {
+            console.log('callback - particles.js config loaded');
+        });
+    </script>
+</body>
+</html>

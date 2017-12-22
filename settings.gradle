@@ -1,0 +1,5 @@
+rootProject.name = 'esport-spring-2018-web'
+
+include 'db'
+project(':db').projectDir = file('db')
+include 'web'
