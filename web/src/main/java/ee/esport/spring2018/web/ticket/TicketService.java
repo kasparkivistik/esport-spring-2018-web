@@ -4,9 +4,13 @@ import org.jooq.DSLContext;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
-import static ee.esport.spring2018.jooq.Tables.*;
+import static ee.esport.spring2018.jooq.Tables.TICKET_TYPES;
 
 @Service
 public class TicketService {
@@ -19,7 +23,31 @@ public class TicketService {
     }
 
     public List<TicketType> getAllTypes() {
-        return dsl.select().from(TICKET_TYPES).fetchInto(TicketType.class);
+        return withRelationsRelations(getAllTicketTypesFlat()).stream()
+                                                              .filter(type -> type.getParentTicketTypeId() == null)
+                                                              .collect(Collectors.toList());
+    }
+
+    private List<TicketType> withRelationsRelations(List<TicketType> ticketTypes) {
+        Map<Integer, TicketType> typesById = ticketTypes.stream()
+                                                        .collect(Collectors.toMap(TicketType::getId,
+                                                                                  Function.identity()));
+        ticketTypes.stream()
+                   .filter(type -> type.getParentTicketTypeId() != null)
+                   .forEach(type -> {
+                       TicketType parentType = typesById.get(type.getParentTicketTypeId());
+                       if (parentType.getPromotions() == null) {
+                           parentType.setPromotions(new ArrayList<>());
+                       }
+                       parentType.getPromotions().add(type);
+                   });
+        return ticketTypes;
+    }
+
+    private List<TicketType> getAllTicketTypesFlat() {
+        return dsl.select()
+                  .from(TICKET_TYPES)
+                  .fetchInto(TicketType.class);
     }
 
 }
