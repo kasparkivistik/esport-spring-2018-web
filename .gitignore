@@ -3,3 +3,4 @@
 *.iml
 build/
 **/src/generated/
+config/application-*-secret.yaml

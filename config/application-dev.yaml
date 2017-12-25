@@ -1,5 +1,6 @@
 spring:
-    datasource:
-        username: "root"
-        password: "root"
-        url: "jdbc:mariadb://localhost/esport2018spring"
+    profiles:
+        include: dev-secret
+jwt:
+    signature:
+        algorithm: "HS512"

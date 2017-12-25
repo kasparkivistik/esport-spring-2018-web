@@ -12,6 +12,7 @@ buildscript {
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 
 group = 'ee.e-sport.spring2018'
@@ -31,6 +32,14 @@ dependencies {
 	compileOnly('org.springframework.boot:spring-boot-configuration-processor')
 	compileOnly('org.projectlombok:lombok')
 	testCompile('org.springframework. boot:spring-boot-starter-test')
+}
+
+def generatedSourcesDir = file('src/generated/java')
+sourceSets.main.java.srcDir generatedSourcesDir
+idea {
+	module {
+		generatedSourceDirs += generatedSourcesDir
+	}
 }
 
 clean.doFirst {
