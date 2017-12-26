@@ -52,7 +52,7 @@ bootRun.systemProperties['spring.config.location'] = 'file:' + rootProject.proje
 
 task compileGenerated(type: JavaCompile, dependsOn: 'bootRun') {
 	source = fileTree(dir: 'src/generated/java', include: '**/*.java')
-	destinationDir = file('build/classes/java/main')
+	destinationDir = file('build/classes/main')
 	classpath = sourceSets.main.compileClasspath
 }
 
