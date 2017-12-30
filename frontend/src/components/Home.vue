@@ -9,14 +9,28 @@
               h1 CSGO
     .container.content-block
       h1.text-center Piletid
-      .row
-        .col-lg-4.col-md-6.col-xs-12
+      .row.is-flex
+        .col-lg-4.col-md-6.col-xs-12(v-for="ticket in tickets")
           .ticket
             .ticket-content
-              h2.ticket-name Early Bird CSGO
-              h3.ticket-price 15€
-              p.ticket-remaining 15tk alles
-              p.ticket-description Saadaval kuni 05. jaanuar
+              h2.ticket-name {{ ticket.name }}
+              h3.ticket-price(v-if="ticket.promotions != null")
+                | {{ ticket.promotions[0].cost / ticket.promotions[0].teamSize }}€
+                small.text-default(v-if="ticket.promotions[0].teamSize > 1")  /inimene
+              p.ticket-description(v-if="ticket.promotions != null")
+                | kuni {{ ticket.promotions[0].availableUntil }}
+              h3.ticket-price(v-bind:class="ticket.promotions != null? 'has-promotion' : ''")
+                span.text-default(v-if="ticket.promotions != null") Tavapilet&nbsp
+                | {{ ticket.cost / ticket.teamSize }}€
+                small.text-default(v-if="ticket.teamSize > 1")  /inimene
+              p.ticket-description(v-bind:class="ticket.promotions != null? 'has-promotion' : ''")
+                | saadaval kuni {{ ticket.availableUntil }}
+              p.ticket-remaining alles {{ ticket.amountAvailable }}
+                span(v-if="ticket.teamSize > 1")  tiimile
+                span(v-else)  tk
+              p.ticket-at-location-cost Kohapealt ostes
+                span.text-primary  {{ ticket.atLocationCost / ticket.teamSize }}€
+                small.text-default(v-if="ticket.teamSize > 1")  /inimene
             //router-link.buy-btn(to="/") Osta
             span.buy-btn.disabled Osta
     .container.content-block
@@ -46,6 +60,57 @@
     name: 'Home',
     data () {
       return {
+        tickets: [
+          {
+            name: 'CS:GO meeskond',
+            amountAvailable: 32,
+            cost: 100,
+            atLocationCost: 200,
+            teamSize: 5,
+            availableUntil: '2018-02-03:T00:00:00+02:00',
+            promotions: [
+              {
+                name: 'Early bird',
+                amountAvailable: 32,
+                cost: 75,
+                teamSize: 5,
+                availableUntil: '2018-01-15:T00:00:00+02:00'
+              }
+            ]
+          },
+          {
+            name: 'CS:GO VIP meeskond',
+            amountAvailable: 2,
+            cost: 150,
+            teamSize: 5,
+            availableUntil: '2018-02-03:T00:00:00+02:00'
+          },
+          {
+            name: 'Tavamängija',
+            amountAvailable: 20,
+            cost: 15,
+            atLocationCost: 25,
+            teamSize: 1,
+            availableUntil: '2018-02-03:T00:00:00+02:00',
+            promotions: [
+              {
+                name: 'Early bird',
+                amountAvailable: 20,
+                cost: 10,
+                teamSize: 1,
+                availableUntil: '2018-01-15:T00:00:00+02:00'
+              }
+            ]
+          },
+          {
+            name: 'Pealtvaataja',
+            amountAvailable: null,
+            cost: 5,
+            atLocationCost: 8,
+            teamSize: 1,
+            availableUntil: '2018-02-03:T00:00:00+02:00'
+          }
+        ]
       };
     }
   };

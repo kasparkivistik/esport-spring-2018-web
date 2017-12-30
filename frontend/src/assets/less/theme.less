@@ -86,11 +86,13 @@
   flex-wrap: wrap;
 }
 .row.is-flex > [class*='col-'] {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   justify-content:center;
   text-align: center;
-  max-height: 30vh;
+  &.sponsors, .sponsors-sm {
+    max-height: 30vh;
+  }
   img {
     object-fit: contain;
     max-height: 100%;
@@ -101,4 +103,8 @@
 }
 .sponsors-sm.row.is-flex > [class*='col-'] {
   max-height: 15vh;
+}
+
+.text-default {
+  color: #000;
 }
