@@ -1,6 +1,6 @@
 .gradle/
 .idea/
 *.iml
-build/
+/web/build/
 **/src/generated/
 config/application-*-secret.yaml
