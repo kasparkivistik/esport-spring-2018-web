@@ -29,4 +29,15 @@ public class TicketController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping("/tickets")
+    public ResponseEntity<List<Ticket>> getAllTickets() {
+        return new ResponseEntity<>(ticketService.getAllTickets(), HttpStatus.OK);
+    }
+
+    @PostMapping("/ticket")
+    public ResponseEntity<Void> buyTicket(@RequestBody Ticket ticket) {
+        ticketService.buyTicket(ticket);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }
