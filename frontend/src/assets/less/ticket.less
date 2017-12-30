@@ -1,0 +1,26 @@
+.ticket {
+  .card;
+  .ticket-content {
+    padding: 30px 20px;
+    .ticket-price {
+      margin-top: 0;
+      color: #95004F;
+    }
+  }
+  .buy-btn {
+    text-align: center;
+    border-radius: 0 0 @card-border-radius @card-border-radius;
+    background: linear-gradient(45deg, #710835, #951049);
+    width: 100%;
+    color: #fff;
+    height: 50px;
+    line-height: 50px;
+    display: block;
+    font-weight: 700;
+    text-transform: uppercase;
+    &.disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}
