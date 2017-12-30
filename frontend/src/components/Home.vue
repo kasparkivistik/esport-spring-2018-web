@@ -1,6 +1,14 @@
 <template lang="pug">
-  .container
-    .h1 {{ msg }}
+  div
+    .hero
+      .container
+        .row
+          .col-sm-6.col-xs-12.center-content
+            span
+              h1 9.-11. veebruar
+              h1 CSGO
+    .container
+      .h1 Hello!
 </template>
 
 <script>
@@ -8,7 +16,6 @@
     name: 'Home',
     data () {
       return {
-        msg: 'Hello!'
       };
     }
   };
