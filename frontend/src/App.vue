@@ -8,7 +8,7 @@
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          router-link.navbar-brand(to="/"): img.navbar-logo(src="./assets/svg/logo.small.svg")
+          router-link.navbar-brand(to="/"): img.navbar-logo(src="./assets/svg/logo.long.svg")
         .collapse.navbar-collapse
           ul.nav.navbar-nav.navbar-right
             li: router-link(to="/") Avaleht
