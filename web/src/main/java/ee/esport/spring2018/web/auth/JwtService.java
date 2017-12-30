@@ -8,6 +8,7 @@ import io.jsonwebtoken.impl.DefaultJwtBuilder;
 import io.jsonwebtoken.impl.DefaultJwtParser;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Service;
 
@@ -25,8 +26,8 @@ public class JwtService {
 
     public static final String ISSUER = "TTÜ e-Sport";
 
-    private SignatureAlgorithm algorithm;
-    private String key;
+    @Setter private SignatureAlgorithm algorithm;
+    @Setter private String key;
 
     public String createFromClaims(EsportClaims claims) {
         LocalDateTime now = LocalDateTime.now(ZoneOffset.UTC);
