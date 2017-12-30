@@ -2,6 +2,8 @@
   display: block;
   margin-bottom: 30px;
   height: 100%;
+  max-width: 350px;
+  width: 100%;
   .card;
   .ticket-content {
     height: ~"calc(100% - 50px)";
@@ -28,7 +30,11 @@
     }
   }
   .has-promotion {
-    transform: scale(0.75);
+    transform: scale(0.7);
     opacity: 0.6;
+    margin: 0;
+    &.ticket-description {
+      padding-bottom: 15px;
+    }
   }
 }

@@ -12,11 +12,15 @@ window.jQuery = $;
 require('bootstrap-less/js/bootstrap');
 
 Vue.config.productionTip = false;
-
 Vue.use(VueGoogleMaps, {
   load: {
     key: 'AIzaSyAuldH1cG6aVHzWpmxdGAIiHvaBXzZAqPc'
   }
+});
+const moment = require('moment');
+require('moment/locale/et');
+Vue.use(require('vue-moment'), {
+  moment
 });
 
 /* eslint-disable no-new */

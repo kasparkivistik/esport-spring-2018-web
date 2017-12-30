@@ -1,16 +1,16 @@
 <template lang="pug">
   div
     .hero
-      .container
-        .row
-          .col-sm-6.col-xs-12.center-content
+      .container.center-content
             span
-              h1 9.-11. veebruar
-              h1 CSGO
+              h1: strong 9.-11. veebruar
+              h2 CSGO
+              h2 32 meeskonda
+              h1 Piletid varsti saadaval!
     .container.content-block
       h1.text-center Piletid
       .row.is-flex
-        .col-lg-4.col-md-6.col-xs-12(v-for="ticket in tickets")
+        .col-lg-3.col-md-4.col-sm-6.col-xs-12(v-for="ticket in tickets")
           .ticket
             .ticket-content
               h2.ticket-name {{ ticket.name }}
@@ -18,17 +18,18 @@
                 | {{ ticket.promotions[0].cost / ticket.promotions[0].teamSize }}€
                 small.text-default(v-if="ticket.promotions[0].teamSize > 1")  /inimene
               p.ticket-description(v-if="ticket.promotions != null")
-                | kuni {{ ticket.promotions[0].availableUntil }}
+                | kuni {{ [ticket.promotions[0].availableUntil, 'YYYY-MM-DD:THH:mm:ssZ'] | moment("Do MMMM") }}
               h3.ticket-price(v-bind:class="ticket.promotions != null? 'has-promotion' : ''")
                 span.text-default(v-if="ticket.promotions != null") Tavapilet&nbsp
                 | {{ ticket.cost / ticket.teamSize }}€
-                small.text-default(v-if="ticket.teamSize > 1")  /inimene
+                small.text-default(v-if="ticket.teamSize > 1 && ticket.promotions != null")  /in
+                small.text-default(v-if="ticket.teamSize > 1 && ticket.promotions == null")  /inimene
               p.ticket-description(v-bind:class="ticket.promotions != null? 'has-promotion' : ''")
-                | saadaval kuni {{ ticket.availableUntil }}
-              p.ticket-remaining alles {{ ticket.amountAvailable }}
+                | saadaval kuni {{ [ticket.availableUntil, 'YYYY-MM-DD:THH:mm:ssZ'] | moment("Do MMMM") }}
+              p.ticket-remaining.text-lead(v-if="ticket.amountAvailable != null") alles {{ ticket.amountAvailable }}
                 span(v-if="ticket.teamSize > 1")  tiimile
                 span(v-else)  tk
-              p.ticket-at-location-cost Kohapealt ostes
+              p.ticket-at-location-cost(v-if="ticket.atLocationCost != null") Kohapealt ostes
                 span.text-primary  {{ ticket.atLocationCost / ticket.teamSize }}€
                 small.text-default(v-if="ticket.teamSize > 1")  /inimene
             //router-link.buy-btn(to="/") Osta
@@ -53,6 +54,7 @@
         .col-xs-4.col-sm-3: img(src="../assets/sponsors/bytelife.png")
         .col-xs-4.col-sm-3: img(src="../assets/sponsors/exit_room.jpg")
         .col-xs-4.col-sm-3: img(src="../assets/sponsors/iveco.jpg")
+        .col-xs-4.col-sm-3: img(src="../assets/sponsors/ye.jpg")
 </template>
 
 <script>
