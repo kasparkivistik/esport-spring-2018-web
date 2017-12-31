@@ -3,12 +3,12 @@
     .hero
       .container.center-content
             span
-              h1: strong 9.-11. veebruar
-              h2 CSGO
-              h2 32 meeskonda
-              h1 Piletid varsti saadaval!
+              h1: strong(v-t="'hero.date'")
+              h2(v-t="'hero.game'")
+              h2(v-t="'hero.teams'")
+              h1(v-t="'hero.ticketsSoon'")
     .container.content-block
-      h1.text-center Piletid
+      h1.text-center(v-t="'tickets.tickets'")
       .row.is-flex
         .col-lg-3.col-md-4.col-sm-6.col-xs-12(v-for="ticket in tickets")
           .ticket
@@ -16,26 +16,30 @@
               h2.ticket-name {{ ticket.name }}
               h3.ticket-price(v-if="ticket.promotions != null")
                 | {{ ticket.promotions[0].cost / ticket.promotions[0].teamSize }}€
-                small.text-default(v-if="ticket.promotions[0].teamSize > 1")  /inimene
+                small.text-default(v-if="ticket.promotions[0].teamSize > 1")  {{ $t('tickets.perPerson') }}
               p.ticket-description(v-if="ticket.promotions != null")
-                | kuni {{ [ticket.promotions[0].availableUntil, 'YYYY-MM-DD:THH:mm:ssZ'] | moment("Do MMMM") }}
+                | {{ $t('tickets.until') }}
+                |  {{ [ticket.promotions[0].availableUntil, 'YYYY-MM-DD:THH:mm:ssZ'] | moment("Do MMMM") }}
               h3.ticket-price(v-bind:class="ticket.promotions != null? 'has-promotion' : ''")
-                span.text-default(v-if="ticket.promotions != null") Tavapilet&nbsp
+                span.text-default(v-if="ticket.promotions != null") {{ $t('tickets.regularTicket') }}&nbsp
                 | {{ ticket.cost / ticket.teamSize }}€
-                small.text-default(v-if="ticket.teamSize > 1 && ticket.promotions != null")  /in
-                small.text-default(v-if="ticket.teamSize > 1 && ticket.promotions == null")  /inimene
+                small.text-default(v-if="ticket.teamSize > 1 && ticket.promotions != null")
+                  |  {{ $t('tickets.perPersonShort') }}
+                small.text-default(v-if="ticket.teamSize > 1 && ticket.promotions == null")
+                  |  {{ $t('tickets.perPerson') }}
               p.ticket-description(v-bind:class="ticket.promotions != null? 'has-promotion' : ''")
-                | saadaval kuni {{ [ticket.availableUntil, 'YYYY-MM-DD:THH:mm:ssZ'] | moment("Do MMMM") }}
-              p.ticket-remaining.text-lead(v-if="ticket.amountAvailable != null") alles {{ ticket.amountAvailable }}
-                span(v-if="ticket.teamSize > 1")  tiimile
-                span(v-else)  tk
-              p.ticket-at-location-cost(v-if="ticket.atLocationCost != null") Kohapealt ostes
+                | {{ $t('tickets.availableUntil') }}
+                |  {{ [ticket.availableUntil, 'YYYY-MM-DD:THH:mm:ssZ'] | moment("Do MMMM") }}
+              p.ticket-remaining.text-lead(v-if="ticket.amountAvailable != null")  {{ ticket.amountAvailable }}
+                span(v-if="ticket.teamSize > 1")  {{ $t('tickets.teams') }}
+                span(v-else)  {{ $t('tickets.pieces') }}
+              p.ticket-at-location-cost(v-if="ticket.atLocationCost != null") {{ $t('tickets.atLocation') }}
                 span.text-primary  {{ ticket.atLocationCost / ticket.teamSize }}€
-                small.text-default(v-if="ticket.teamSize > 1")  /inimene
+                small.text-default(v-if="ticket.teamSize > 1")  {{ $t('tickets.perPerson') }}
             //router-link.buy-btn(to="/") Osta
-            span.buy-btn.disabled Osta
+            span.buy-btn.disabled {{ $t('tickets.buy') }}
     .container.content-block
-      h1.text-center Sponsorid
+      h1.text-center(v-t="'home.sponsors'")
       .row.is-flex.sponsors
         .col-xs-6: img.img-responsive(src="../../assets/sponsors/arvutitark_logo.svg")
         .col-xs-6: img.img-responsive(src="../../assets/sponsors/msi-gaming.png")

@@ -1,0 +1,36 @@
+{
+  "moment": "en-gb",
+  "navbar": {
+    "home": "Home",
+    "contact": "Contact"
+  },
+  "hero": {
+    "date": "February 9.-11.",
+    "game": "CSGO",
+    "teams": "32 teams",
+    "ticketsSoon": "Tickets available soon!"
+  },
+  "tickets": {
+    "tickets": "Tickets",
+    "perPerson": "/person",
+    "perPersonShort": "/per",
+    "until": "until",
+    "availableUntil": "available until",
+    "regularTicket": "Regularly",
+    "remaining": "remaining",
+    "teams": "teams",
+    "pieces": "pc",
+    "atLocation": "At location",
+    "buy": "Buy"
+  },
+  "home": {
+    "sponsors": "Sponsors"
+  },
+  "contact": {
+    "contacts": "Contacts",
+    "chiefOrganizer": "Chief Organizer",
+    "organizers": "Organisers",
+    "ituk": "Student Council of School of IT of TTU",
+    "itukEmail": "contact@ituk.ee"
+  }
+}

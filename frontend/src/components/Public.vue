@@ -11,9 +11,10 @@
           router-link.navbar-brand(to="/"): img.navbar-logo(src="../assets/svg/logo.long.svg")
         .collapse.navbar-collapse
           ul.nav.navbar-nav.navbar-right
-            li: router-link(to="Home")
-            li: router-link(to="Contact")
-            li: a(v-on:click.stop.prevent="language = 'en'") LANG
+            li: router-link(to="/") {{ $t('navbar.home') }}
+            li: router-link(to="contact") {{ $t('navbar.contact') }}
+            li: a(href="#", v-on:click.stop.prevent="setLanguage('en')" v-if="getLanguage != 'en'") ENG
+            li: a(href="#", v-on:click.stop.prevent="setLanguage('et')" v-if="getLanguage != 'et'") EST
     router-view.view
     .footer.center-content
       a.footer-link.footer-social(href="https://www.facebook.com/ttuesport/"): i.fa.fa-lg.fa-facebook
@@ -24,6 +25,22 @@
 
 <script>
   export default {
-    name: 'public'
+    name: 'public',
+    methods: {
+      setLanguage: function (language) {
+        this.$root.$i18n.locale = language;
+        this.$moment.locale(this.$root.$i18n.t('moment'));
+        this.$root.$localStorage.set('language', language);
+      }
+    },
+    computed: {
+      getLanguage: function () {
+        return this.$root.$i18n.locale;
+      }
+    },
+    created () {
+      this.$root.$i18n.locale = this.$root.$localStorage.get('language', 'et');
+      this.$moment.locale(this.$root.$i18n.t('moment'));
+    }
   };
 </script>
