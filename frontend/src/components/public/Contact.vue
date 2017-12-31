@@ -4,7 +4,7 @@
     .row
       .col-sm-6.col-xs-12.person
         .person-picture
-          img(src="../assets/images/lauri_kukk.jpg")
+          img(src="../../assets/images/lauri_kukk.jpg")
         .person-details
           h2 Lauri Kukk
           h4: em Peakorraldaja
@@ -12,7 +12,7 @@
           p: a(href="tel:+37253485349") 5348 5349
       .col-sm-6.col-xs-12.person
         .person-picture
-          img(src="../assets/images/ituk_pic.jpg")
+          img(src="../../assets/images/ituk_pic.jpg")
         .person-details
           h2 IT-teaduskonna üliõpilaskogu
           h4: em Korraldajad

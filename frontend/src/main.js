@@ -3,7 +3,7 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
-
+import Vuex from 'vuex';
 import * as VueGoogleMaps from 'vue2-google-maps';
 
 import './assets/less/style.less';
@@ -11,12 +11,15 @@ const $ = require('jquery');
 window.jQuery = $;
 require('bootstrap-less/js/bootstrap');
 
+Vue.use(Vuex);
+
 Vue.config.productionTip = false;
 Vue.use(VueGoogleMaps, {
   load: {
     key: 'AIzaSyAuldH1cG6aVHzWpmxdGAIiHvaBXzZAqPc'
   }
 });
+
 const moment = require('moment');
 require('moment/locale/et');
 Vue.use(require('vue-moment'), {

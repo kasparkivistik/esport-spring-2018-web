@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from '@/components/Home';
-import Contact from '@/components/Contact';
+import Public from '@/components/Public';
+import Home from '@/components/public/Home';
+import Contact from '@/components/public/Contact';
 
 Vue.use(Router);
 
@@ -9,13 +10,19 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
-      component: Home
-    },
-    {
-      path: '/kontakt',
-      name: 'Contact',
-      component: Contact
+      component: Public,
+      children: [
+        {
+          path: '',
+          name: 'Home',
+          component: Home
+        },
+        {
+          path: 'contact',
+          name: 'Contact',
+          component: Contact
+        }
+      ]
     }
   ]
 });
