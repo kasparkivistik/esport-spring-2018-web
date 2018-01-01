@@ -11,9 +11,7 @@
   export default {
     name: 'Faq',
     data () {
-      return {
-        open: null
-      };
+      return {};
     }
   };
 </script>

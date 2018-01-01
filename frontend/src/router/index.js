@@ -4,6 +4,7 @@ import Public from '@/components/Public';
 import Home from '@/components/public/Home';
 import Contact from '@/components/public/Contact';
 import Faq from '@/components/public/Faq';
+import Buy from '@/components/public/Buy';
 
 Vue.use(Router);
 
@@ -27,6 +28,11 @@ export default new Router({
           path: 'faq',
           name: 'Faq',
           component: Faq
+        },
+        {
+          path: 'buy/:ticketId',
+          name: 'Buy',
+          component: Buy
         }
       ]
     }

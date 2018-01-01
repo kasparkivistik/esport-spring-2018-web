@@ -36,8 +36,7 @@
               p.ticket-at-location-cost(v-if="ticket.atLocationCost != null") {{ $t('tickets.atLocation') }}
                 span.text-primary  {{ ticket.atLocationCost / ticket.teamSize }}€
                 small.text-default(v-if="ticket.teamSize > 1")  {{ $t('tickets.perPerson') }}
-            //router-link.buy-btn(to="/") Osta
-            span.buy-btn.disabled {{ $t('tickets.buy') }}
+            router-link.buy-btn(:to="{ name: 'Buy', params: { ticketId: ticket.amountAvailable } }") Osta
     .container.content-block
       h1.text-center(v-t="'home.sponsors'")
       .row.is-flex.sponsors

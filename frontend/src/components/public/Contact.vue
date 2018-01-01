@@ -26,9 +26,7 @@
   export default {
     name: 'Contact',
     data () {
-      return {
-
-      };
+      return {};
     }
   };
 </script>

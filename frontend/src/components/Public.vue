@@ -11,9 +11,9 @@
           router-link.navbar-brand(to="/"): img.navbar-logo(src="../assets/svg/logo.long.svg")
         .collapse.navbar-collapse
           ul.nav.navbar-nav.navbar-right
-            li: router-link(to="/") {{ $t('navbar.home') }}
-            li: router-link(to="contact") {{ $t('navbar.contact') }}
-            li: router-link(to="faq") {{ $t('navbar.faq') }}
+            li: router-link(:to="{ name: 'Home' }") {{ $t('navbar.home') }}
+            li: router-link(:to="{ name: 'Contact' }") {{ $t('navbar.contact') }}
+            li: router-link(:to="{ name: 'Faq' }") {{ $t('navbar.faq') }}
             li: a(href="#", v-on:click.stop.prevent="setLanguage('en')" v-if="getLanguage != 'en'"): strong EN
             li: a(href="#", v-on:click.stop.prevent="setLanguage('et')" v-if="getLanguage != 'et'"): strong ET
     router-view.view
