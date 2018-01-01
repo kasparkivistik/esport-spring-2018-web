@@ -5,6 +5,7 @@ import Home from '@/components/public/Home';
 import Contact from '@/components/public/Contact';
 import Faq from '@/components/public/Faq';
 import Buy from '@/components/public/Buy';
+import TicketLogin from '@/components/TicketLogin';
 
 Vue.use(Router);
 
@@ -35,6 +36,11 @@ export default new Router({
           component: Buy
         }
       ]
+    },
+    {
+      path: '/ticketLogin/:loginKey',
+      name: 'TicketLogin',
+      component: TicketLogin
     }
   ]
 });
