@@ -22,11 +22,18 @@
       a.footer-link.footer-social(href="https://www.instagram.com/ttuesport/"): i.fa.fa-lg.fa-instagram
       a.footer-link.footer-social(href="mailto:esport@ituk.ee"): i.fa.fa-lg.fa-envelope
       a.footer-link.footer-social(href="https://github.com/ituk-ttu/esport-spring-2018-web"): i.fa.fa-lg.fa-github
+    .logging-in.center-content(v-if="loggingIn")
+      i.fa.fa-4x.fa-cog.fa-spin
 </template>
 
 <script>
   export default {
     name: 'public',
+    data () {
+      return {
+        loggingIn: false
+      }
+    },
     methods: {
       setLanguage: function (language) {
         this.$root.$i18n.locale = language;
