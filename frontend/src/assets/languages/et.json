@@ -77,5 +77,11 @@
     "pricePerPlayer": "Hind ühe mängija kohta",
     "total": "Kokku",
     "info": "Pilet broneeritakse pärast \"Osta pilet\" vajutamist. Pärast seda kuvatakse ning saadetakse emailile arve, mis tuleb tasuda 3 tööpäeva jooksul. Pilet loetakse tasutuks kui raha on kandunud arves viidatud kontole. Pileti eest tasumise staatust on hiljem võimalik kontrollida sisse logides või kasutades emailis sisalduvat linki. Samuti saadetakse pileti kinnitamisel email."
+  },
+  "login": {
+    "steam": {
+      "title": "Sisse logitud!",
+      "text": "Oled edukalt Steamiga sisse logitud!"
+    }
   }
 }

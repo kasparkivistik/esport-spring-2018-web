@@ -28,12 +28,20 @@
   export default {
     name: 'public',
     data () {
+      return {};
     },
     methods: {
       setLanguage: function (language) {
         this.$root.$i18n.locale = language;
         this.$moment.locale(this.$root.$i18n.t('moment'));
         this.$root.$localStorage.set('language', language);
+      },
+      showSteamLoggedIn: function () {
+        this.$notify({
+          title: this.$t('login.steam.title'),
+          text: this.$t('login.steam.text'),
+          classes: 'black'
+        });
       }
     },
     computed: {
@@ -44,6 +52,9 @@
     created () {
       this.$root.$i18n.locale = this.$root.$localStorage.get('language', 'et');
       this.$moment.locale(this.$root.$i18n.t('moment'));
+    },
+    mounted () {
+      this.showSteamLoggedIn();
     }
   };
 </script>

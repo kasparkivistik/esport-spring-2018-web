@@ -8,6 +8,7 @@ import i18n from './language';
 import App from './App';
 import VueLocalStorage from 'vue-localstorage';
 import VueAnalytics from 'vue-analytics';
+import Notifications from 'vue-notification';
 
 import './assets/less/style.less';
 const $ = require('jquery');
@@ -34,6 +35,8 @@ Vue.use(require('vue-moment'), {
 Vue.use(VueAnalytics, {
   id: 'UA-111484189-1'
 });
+
+Vue.use(Notifications);
 
 /* eslint-disable no-new */
 new Vue({
