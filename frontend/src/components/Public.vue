@@ -13,8 +13,9 @@
           ul.nav.navbar-nav.navbar-right
             li: router-link(to="/") {{ $t('navbar.home') }}
             li: router-link(to="contact") {{ $t('navbar.contact') }}
-            li: a(href="#", v-on:click.stop.prevent="setLanguage('en')" v-if="getLanguage != 'en'") ENG
-            li: a(href="#", v-on:click.stop.prevent="setLanguage('et')" v-if="getLanguage != 'et'") EST
+            li: router-link(to="faq") {{ $t('navbar.faq') }}
+            li: a(href="#", v-on:click.stop.prevent="setLanguage('en')" v-if="getLanguage != 'en'"): strong EN
+            li: a(href="#", v-on:click.stop.prevent="setLanguage('et')" v-if="getLanguage != 'et'"): strong ET
     router-view.view
     .footer.center-content
       a.footer-link.footer-social(href="https://www.facebook.com/ttuesport/"): i.fa.fa-lg.fa-facebook
