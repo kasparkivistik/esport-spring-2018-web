@@ -1,30 +1,35 @@
 <template lang="pug">
-  .container
-    h1.text-center(v-t="'buy.buyTicket'")
-    h2.text-center {{ ticket.name }}
-    form(v-on:submit.prevent="send()")
-      .form-group
-        label.control-label(v-t="ticket.teamSize <= 1 ? 'buy.name' : 'buy.teamName'")
-        input.form-control.input-lg(v-model="ticketDetails.name" required)
-      .form-group
-        label.control-label(v-t="'buy.email'")
-        input.form-control.input-lg(v-model="ticketDetails.ownerEmail" type="email" required)
-      .form-group
-        steam-login(disabled="true")
-      blockquote.form-group
-        p {{ $t('buy.numberOfPlayers') }}:
-          span.text-primary  {{ ticket.teamSize }}
-        p {{ $t('buy.pricePerPlayer') }}:
-          span.text-primary  {{ ticket.cost / ticket.teamSize }}€
-        p.lead {{ $t('buy.total') }}:
-          span.text-primary  {{ ticket.cost }}€
-      .form-group
-        button.btn.btn-primary.btn-lg(type="submit" v-if="!sending")
-          | {{ $t('buy.buyTicket') }}
-        button.btn.btn-primary.btn-lg.disabled(type="submit" v-if="sending" disabled)
-          i.fa.fa-cog.fa-spin
-      .form-group
-        p.text-muted(v-t="'buy.info'")
+  div
+    .container(v-if="!bought")
+      h1.text-center {{ $t('buy.buyTicket') }}
+      h2.text-center {{ ticket.name }}
+      form(v-on:submit.prevent="send()")
+        .form-group
+          label.control-label(v-t="ticket.teamSize <= 1 ? 'buy.name' : 'buy.teamName'")
+          input.form-control.input-lg(v-model="ticketDetails.name" required)
+        .form-group
+          label.control-label(v-t="'buy.email'")
+          input.form-control.input-lg(v-model="ticketDetails.ownerEmail" type="email" required)
+        .form-group
+          steam-login(disabled)
+        blockquote.form-group
+          p {{ $t('buy.numberOfPlayers') }}:
+            span.text-primary  {{ ticket.teamSize }}
+          p {{ $t('buy.pricePerPlayer') }}:
+            span.text-primary  {{ ticket.cost / ticket.teamSize }}€
+          p.lead {{ $t('buy.total') }}:
+            span.text-primary  {{ ticket.cost }}€
+        .form-group
+          button.btn.btn-primary.btn-lg(type="submit" v-if="!sending")
+            | {{ $t('buy.buyTicket') }}
+          button.btn.btn-primary.btn-lg.disabled(type="submit" v-if="sending" disabled)
+            i.fa.fa-cog.fa-spin
+        .form-group
+          p.text-muted(v-t="'buy.info'")
+    .container(v-if="bought")
+      h1.text-center {{ $t('buy.success.title') }}
+      p.lead(v-t="'buy.checkMail'")
+      p(v-t="'buy.paymentInfo'")
 </template>
 
 <script>
@@ -33,11 +38,12 @@
     name: 'Buy',
     data () {
       return {
+        bought: false,
         sending: false,
         ticket: null,
         ticketDetails: {
           name: '',
-          email: ''
+          ownerEmail: ''
         }
       };
     },
@@ -46,15 +52,12 @@
         if (!this.sending) {
           const self = this;
           this.sending = true;
-          this.ticketDetails.ticket = this.ticket;
+          this.ticketDetails.type = {id: this.ticket.id};
           this.$http.post(this.$config.apiBase + '/api/ticket', this.ticketDetails).then(function (res) {
             if (res.ok) {
-              this.$notify({
-                title: this.$t('buy.success.title'),
-                text: this.$t('buy.success.text')
-              });
+              self.bought = true;
             } else {
-              this.$notify({
+              self.$notify({
                 title: this.$t('buy.fail.title'),
                 text: this.$t('buy.fail.text')
               });

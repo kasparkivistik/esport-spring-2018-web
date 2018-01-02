@@ -89,7 +89,7 @@
     "numberOfPlayers": "Mängijate arv",
     "pricePerPlayer": "Hind ühe mängija kohta",
     "total": "Kokku",
-    "info": "Pilet broneeritakse pärast \"Osta pilet\" vajutamist. Pärast seda kuvatakse ning saadetakse emailile arve, mis tuleb tasuda 3 tööpäeva jooksul. Pilet loetakse tasutuks kui raha on kandunud arves viidatud kontole. Pileti eest tasumise staatust on hiljem võimalik kontrollida sisse logides või kasutades emailis sisalduvat linki. Samuti saadetakse pileti kinnitamisel email.",
+    "info": "Pilet broneeritakse pärast \"Osta pilet\" vajutamist. Pärast seda kuvatakse ning saadetakse emailile arve, mis tuleb tasuda 3 päeva jooksul. Pilet loetakse tasutuks kui raha on kandunud arves viidatud kontole. Pileti eest tasumise staatust on hiljem võimalik kontrollida sisse logides või kasutades emailis sisalduvat linki. Samuti saadetakse pileti kinnitamisel email.",
     "success": {
       "title": "Pilet ostetud!",
       "text": "Vaata enda emaili!"
@@ -97,7 +97,20 @@
     "fail": {
       "title": "Tekkis viga!",
       "text": "Proovi hiljem uuesti!"
-    }
+    },
+    "invoice": "Arve",
+    "sentToMail": "Arve on saadetud Sinu emaili aadressile!",
+    "invoiceNumber": "Arve number",
+    "date": "Kuupäev",
+    "ticket": "Pilet",
+    "vatInfo": "MTÜ FOR Tsükkel ei ole käibemaksukohuslane Eesti Käibemaksuseaduse mõistes ja summa ei sisalda käibemaksu.",
+    "payment": "Maksmine",
+    "bank": "Pank",
+    "receiver": "Saaja",
+    "description": "Selgitus",
+    "paymentDue": "Makse tähtaeg",
+    "paymentInfo": "Pileti kinnitamiseks peab olema raha kantud saaja kontole hiljemalt maksetähtaja kuupäeva lõpuks. Maksmata jätmisel pilet tühistatakse.",
+    "checkMail": "Arve saadeti Sinu e-maili aaderssile!"
   },
   "login": {
     "steam": {
