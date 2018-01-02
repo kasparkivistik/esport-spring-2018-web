@@ -40,7 +40,8 @@ public class TicketService {
         ticket.setType(ticketRepository.getTicketType(ticket.getType().getId()));
         String loginLinkKey = ticketRepository.createLoginLink(ticket.getId());
         String loginLink = UriComponentsBuilder.fromUriString(referrer)
-                                               .replacePath("/ticketLogin/" + loginLinkKey)
+                                               .replacePath("/")
+                                               .fragment("/ticketLogin/" + loginLinkKey)
                                                .toUriString();
         emailService.sendTicketReservation(ticket,
                                            loginLink).get();
