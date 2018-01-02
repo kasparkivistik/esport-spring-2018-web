@@ -27,9 +27,6 @@
 <script>
   export default {
     name: 'public',
-    data () {
-      return {};
-    },
     methods: {
       setLanguage: function (language) {
         this.$root.$i18n.locale = language;
@@ -53,8 +50,16 @@
       this.$root.$i18n.locale = this.$root.$localStorage.get('language', 'et');
       this.$moment.locale(this.$root.$i18n.t('moment'));
     },
-    mounted () {
-      this.showSteamLoggedIn();
+    data () {
+      return {
+        tickets: null
+      };
+    },
+    mounted: function () {
+      const self = this;
+      this.$http.get(this.$config.apiBase + '/api/ticketTypes').then(function (res) {
+        self.tickets = res.body;
+      });
     }
   };
 </script>

@@ -22,7 +22,13 @@
     "teams": "tiimile",
     "pieces": "tk",
     "atLocation": "Kohapealt ostes",
-    "buy": "Osta"
+    "buy": "Osta",
+    "names": {
+      "CS:GO Team": "CS:GO meeskond",
+      "CS:GO VIP Team": "CS:GO VIP meeskond",
+      "Regular Gamer": "Tavamängija",
+      "Spectator": "Pealtvaataja"
+    }
   },
   "home": {
     "sponsors": "Sponsorid"
@@ -70,13 +76,22 @@
   "buy": {
     "buyTicket": "Osta pilet",
     "teamName": "Meeskonna nimi",
+    "name": "Nimi",
     "email": "E-maili aadress",
     "personalCode": "Isikukood",
     "connectWithSteam": "Seo Steamiga",
     "numberOfPlayers": "Mängijate arv",
     "pricePerPlayer": "Hind ühe mängija kohta",
     "total": "Kokku",
-    "info": "Pilet broneeritakse pärast \"Osta pilet\" vajutamist. Pärast seda kuvatakse ning saadetakse emailile arve, mis tuleb tasuda 3 tööpäeva jooksul. Pilet loetakse tasutuks kui raha on kandunud arves viidatud kontole. Pileti eest tasumise staatust on hiljem võimalik kontrollida sisse logides või kasutades emailis sisalduvat linki. Samuti saadetakse pileti kinnitamisel email."
+    "info": "Pilet broneeritakse pärast \"Osta pilet\" vajutamist. Pärast seda kuvatakse ning saadetakse emailile arve, mis tuleb tasuda 3 tööpäeva jooksul. Pilet loetakse tasutuks kui raha on kandunud arves viidatud kontole. Pileti eest tasumise staatust on hiljem võimalik kontrollida sisse logides või kasutades emailis sisalduvat linki. Samuti saadetakse pileti kinnitamisel email.",
+    "success": {
+      "title": "Pilet ostetud!",
+      "text": "Vaata enda emaili!"
+    },
+    "fail": {
+      "title": "Tekkis viga!",
+      "text": "Proovi hiljem uuesti!"
+    }
   },
   "login": {
     "steam": {

@@ -9,17 +9,19 @@
               h1(v-t="'hero.ticketsSoon'")
     .container.content-block
       h1.text-center(v-t="'tickets.tickets'")
+      .text-center.center-content(v-if="$parent.tickets == null")
+        i.fa.fa-2x.fa-cog.fa-spin
       .row.is-flex
-        .col-lg-3.col-md-4.col-sm-6.col-xs-12(v-for="ticket in tickets")
+        .col-lg-3.col-md-4.col-sm-6.col-xs-12(v-for="ticket in $parent.tickets" v-if="$parent.tickets != null")
           .ticket
             .ticket-content
-              h2.ticket-name {{ ticket.name }}
+              h2.ticket-name {{ $t('tickets.names["' + ticket.name + '"]') }}
               h3.ticket-price(v-if="ticket.promotions != null")
                 | {{ ticket.promotions[0].cost / ticket.promotions[0].teamSize }}€
                 small.text-default(v-if="ticket.promotions[0].teamSize > 1")  {{ $t('tickets.perPerson') }}
               p.ticket-description(v-if="ticket.promotions != null")
                 | {{ $t('tickets.until') }}
-                |  {{ [ticket.promotions[0].availableUntil, 'YYYY-MM-DD:THH:mm:ssZ'] | moment("Do MMMM") }}
+                |  {{ ticket.promotions[0].availableUntil | moment("Do MMMM") }}
               h3.ticket-price(v-bind:class="ticket.promotions != null? 'has-promotion' : ''")
                 span.text-default(v-if="ticket.promotions != null") {{ $t('tickets.regularTicket') }}&nbsp
                 | {{ ticket.cost / ticket.teamSize }}€
@@ -29,14 +31,15 @@
                   |  {{ $t('tickets.perPerson') }}
               p.ticket-description(v-bind:class="ticket.promotions != null? 'has-promotion' : ''")
                 | {{ $t('tickets.availableUntil') }}
-                |  {{ [ticket.availableUntil, 'YYYY-MM-DD:THH:mm:ssZ'] | moment("Do MMMM") }}
+                |  {{ ticket.availableUntil | moment("Do MMMM") }}
               p.ticket-remaining.text-lead(v-if="ticket.amountAvailable != null")  {{ ticket.amountAvailable }}
                 span(v-if="ticket.teamSize > 1")  {{ $t('tickets.teams') }}
                 span(v-else)  {{ $t('tickets.pieces') }}
               p.ticket-at-location-cost(v-if="ticket.atLocationCost != null") {{ $t('tickets.atLocation') }}
                 span.text-primary  {{ ticket.atLocationCost / ticket.teamSize }}€
                 small.text-default(v-if="ticket.teamSize > 1")  {{ $t('tickets.perPerson') }}
-            router-link.buy-btn(:to="{ name: 'Buy', params: { ticketId: ticket.amountAvailable } }") Osta
+            router-link.buy-btn(:to="{ name: 'Buy', params: { ticketId: ticket.promotions != null ? ticket.promotions[0].id : ticket.id } }")
+              | Osta
     .container.content-block
       h1.text-center(v-t="'home.sponsors'")
       .row.is-flex.sponsors
@@ -63,60 +66,6 @@
 <script>
   export default {
     name: 'Home',
-    data () {
-      return {
-        tickets: [
-          {
-            name: 'CS:GO meeskond',
-            amountAvailable: 32,
-            cost: 100,
-            atLocationCost: 200,
-            teamSize: 5,
-            availableUntil: '2018-02-03:T00:00:00+02:00',
-            promotions: [
-              {
-                name: 'Early bird',
-                amountAvailable: 32,
-                cost: 75,
-                teamSize: 5,
-                availableUntil: '2018-01-15:T00:00:00+02:00'
-              }
-            ]
-          },
-          {
-            name: 'CS:GO VIP meeskond',
-            amountAvailable: 2,
-            cost: 150,
-            teamSize: 5,
-            availableUntil: '2018-02-03:T00:00:00+02:00'
-          },
-          {
-            name: 'Tavamängija',
-            amountAvailable: 20,
-            cost: 15,
-            atLocationCost: 25,
-            teamSize: 1,
-            availableUntil: '2018-02-03:T00:00:00+02:00',
-            promotions: [
-              {
-                name: 'Early bird',
-                amountAvailable: 20,
-                cost: 10,
-                teamSize: 1,
-                availableUntil: '2018-01-15:T00:00:00+02:00'
-              }
-            ]
-          },
-          {
-            name: 'Pealtvaataja',
-            amountAvailable: null,
-            cost: 5,
-            atLocationCost: 8,
-            teamSize: 1,
-            availableUntil: '2018-02-03:T00:00:00+02:00'
-          }
-        ]
-      };
-    }
+    props: ['tickets']
   };
 </script>

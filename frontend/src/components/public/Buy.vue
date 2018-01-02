@@ -2,18 +2,15 @@
   .container
     h1.text-center(v-t="'buy.buyTicket'")
     h2.text-center {{ ticket.name }}
-    form
+    form(v-on:submit.prevent="send()")
       .form-group
-        label.control-label(v-t="'buy.teamName'")
-        input.form-control.input-lg
+        label.control-label(v-t="ticket.teamSize <= 1 ? 'buy.name' : 'buy.teamName'")
+        input.form-control.input-lg(v-model="ticketDetails.name" required)
       .form-group
         label.control-label(v-t="'buy.email'")
-        input.form-control.input-lg
+        input.form-control.input-lg(v-model="ticketDetails.ownerEmail" type="email" required)
       .form-group
-        label.control-label(v-t="'buy.personalCode'")
-        input.form-control.input-lg
-      .form-group
-        steam-login
+        steam-login(disabled="true")
       blockquote.form-group
         p {{ $t('buy.numberOfPlayers') }}:
           span.text-primary  {{ ticket.teamSize }}
@@ -22,7 +19,10 @@
         p.lead {{ $t('buy.total') }}:
           span.text-primary  {{ ticket.cost }}€
       .form-group
-        button.btn.btn-primary.btn-lg(v-t="'buy.buyTicket'")
+        button.btn.btn-primary.btn-lg(type="submit" v-if="!sending")
+          | {{ $t('buy.buyTicket') }}
+        button.btn.btn-primary.btn-lg.disabled(type="submit" v-if="sending" disabled)
+          i.fa.fa-cog.fa-spin
       .form-group
         p.text-muted(v-t="'buy.info'")
 </template>
@@ -34,24 +34,41 @@
     data () {
       return {
         sending: false,
-        ticket: {
-          name: 'CS:GO meeskond',
-          amountAvailable: 32,
-          cost: 100,
-          atLocationCost: 200,
-          teamSize: 5,
-          availableUntil: '2018-02-03:T00:00:00+02:00',
-          promotions: [
-            {
-              name: 'Early bird',
-              amountAvailable: 32,
-              cost: 75,
-              teamSize: 5,
-              availableUntil: '2018-01-15:T00:00:00+02:00'
-            }
-          ]
+        ticket: null,
+        ticketDetails: {
+          name: '',
+          email: ''
         }
       };
+    },
+    methods: {
+      send: function () {
+        if (!this.sending) {
+          const self = this;
+          this.sending = true;
+          this.ticketDetails.ticket = this.ticket;
+          this.$http.post(this.$config.apiBase + '/api/ticket', this.ticketDetails).then(function (res) {
+            if (res.ok) {
+              this.$notify({
+                title: this.$t('buy.success.title'),
+                text: this.$t('buy.success.text')
+              });
+            } else {
+              this.$notify({
+                title: this.$t('buy.fail.title'),
+                text: this.$t('buy.fail.text')
+              });
+            }
+            self.sending = false;
+          });
+        }
+      }
+    },
+    mounted: function () {
+      const self = this;
+      this.$http.get(this.$config.apiBase + '/api/ticketType/' + this.$route.params.ticketId).then(function (res) {
+        self.ticket = res.body;
+      });
     },
     components: {
       'steam-login': SteamLogin
