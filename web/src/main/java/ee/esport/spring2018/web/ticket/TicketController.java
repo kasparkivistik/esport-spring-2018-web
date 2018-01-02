@@ -1,6 +1,7 @@
 package ee.esport.spring2018.web.ticket;
 
 import ee.esport.spring2018.web.auth.EsportClaimsHolder;
+import ee.esport.spring2018.web.auth.SteamUser;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -34,12 +36,29 @@ public class TicketController {
 
     @GetMapping("/ticketType/{typeId}")
     public ResponseEntity<TicketType> getTicketType(@PathVariable int typeId) {
-        return new ResponseEntity<TicketType>(ticketService.getType(typeId), HttpStatus.OK);
+        return new ResponseEntity<>(ticketService.getType(typeId), HttpStatus.OK);
     }
 
     @GetMapping("/tickets")
-    public ResponseEntity<List<Ticket>> getAllTickets() {
-        return new ResponseEntity<>(ticketService.getAllTickets(), HttpStatus.OK);
+    public ResponseEntity<List<Ticket>> getAllTickets(EsportClaimsHolder claimsHolder) {
+        List<Ticket> allTickets = ticketService.getAllTickets();
+        if(claimsHolder.get().isAdmin()) {
+            return new ResponseEntity<>(allTickets, HttpStatus.OK);
+        }
+        List<Ticket> accessibleTickets = new ArrayList<>();
+        SteamUser steamUser = claimsHolder.get().getSteamUser();
+        if(steamUser != null) {
+            allTickets.stream()
+                      .filter(ticket -> steamUser.getId().equals(ticket.getOwnerSteamId()))
+                      .forEach(accessibleTickets::add);
+        }
+        Long ticketId = claimsHolder.get().getTicketId();
+        if(ticketId != null) {
+            allTickets.stream()
+                      .filter(ticket -> ticketId.intValue() == ticket.getId())
+                      .forEach(accessibleTickets::add);
+        }
+        return new ResponseEntity<>(accessibleTickets, HttpStatus.OK);
     }
 
     @PostMapping("/ticket")
