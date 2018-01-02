@@ -5,10 +5,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -33,6 +30,11 @@ public class TicketController {
         }
         ticketService.addType(type);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/ticketType/{typeId}")
+    public ResponseEntity<TicketType> getTicketType(@PathVariable int typeId) {
+        return new ResponseEntity<TicketType>(ticketService.getType(typeId), HttpStatus.OK);
     }
 
     @GetMapping("/tickets")
