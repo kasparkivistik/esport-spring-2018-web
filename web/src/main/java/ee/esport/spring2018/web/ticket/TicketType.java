@@ -23,4 +23,8 @@ public class TicketType {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<TicketType> promotions;
 
+    public BigDecimal getPerPersonCost() {
+        return cost.divide(BigDecimal.valueOf(teamSize), BigDecimal.ROUND_HALF_UP);
+    }
+
 }

@@ -313,8 +313,8 @@
                                         <p>Arve number / Invoice number: <span class="text-colored">$invoiceNumber</span>
                                             <br>Kuupäev / Date: <span class="text-colored">$ticket.dateCreated.format($datePattern)</span>
                                             <br>Pilet / Ticket: <span class="text-colored">$ticket.type.name</span>
-                                            <br>Ühe mängija hind / Price per player: <span class="text-colored">15€</span>
-                                            <br>Mängijaid meeskonnas / Players in team: <span class="text-colored">5</span></p>
+                                            <br>Ühe mängija hind / Price per player: <span class="text-colored">${ticket.type.perPersonCost}</span>
+                                            <br>Mängijaid meeskonnas / Players in team: <span class="text-colored">$ticket.type.teamSize</span></p>
                                         <h3>Kokku / Total: <span class="text-colored">${ticket.type.cost}€</span></h3>
                                         <p class="text-small text-muted">MTÜ FOR Tsükkel ei ole käibemaksukohuslane Eesti Käibemaksuseaduse mõistes ja summa ei sisalda käibemaksu.</p>
                                         <p class="text-small text-muted">MTÜ FOR Tsükkel is not eligible for VAT under the Estonian Value-Added Tax Act and the fee does not include VAT.</p>
