@@ -42,8 +42,8 @@ Vue.use(VueAnalytics, {
 Vue.use(Notifications);
 
 Vue.use(VueConfig, {
-  apiBase: 'http://localhost.e-sport.ee:8080',
-  steamLoginReturnTo: 'http://localhost.e-sport.ee:8083/static/verifySteamLogin.html'
+  apiBase: process.env.apiBase,
+  steamLoginReturnTo: process.env.steamLoginReturnTo
 });
 
 Vue.use(VueResource);
