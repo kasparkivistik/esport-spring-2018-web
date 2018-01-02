@@ -10,7 +10,10 @@
       return {};
     },
     mounted: function () {
-      console.log(this.$route.params.loginKey);
+      const self = this;
+      self.$http.get(self.$config.apiBase + '/api/ticket/token/' + this.$route.params.loginKey).then(() => {
+        self.$router.push({ name: 'MyTickets' });
+      });
     }
   };
 </script>

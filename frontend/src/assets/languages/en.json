@@ -21,7 +21,13 @@
     "teams": "teams",
     "pieces": "pc",
     "atLocation": "At location",
-    "buy": "Buy"
+    "buy": "Buy",
+    "id": "ID",
+    "name": "Name",
+    "status": "Status",
+    "boughtOnDate": "Bought on",
+    "payByDate": "Pay by",
+    "price": "Price"
   },
   "home": {
     "sponsors": "Sponsors"

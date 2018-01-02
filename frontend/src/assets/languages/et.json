@@ -28,7 +28,13 @@
       "CS:GO VIP Team": "CS:GO VIP meeskond",
       "Regular Gamer": "Tavamängija",
       "Spectator": "Pealtvaataja"
-    }
+    },
+    "id": "ID",
+    "name": "Nimi",
+    "status": "Staatus",
+    "boughtOnDate": "Ostetud",
+    "payByDate": "Maksta",
+    "price": "Hind"
   },
   "home": {
     "sponsors": "Sponsorid"

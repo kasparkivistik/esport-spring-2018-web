@@ -27,8 +27,10 @@ public class CorsFilter extends OncePerRequestFilter {
             Matcher matcher = originPattern.matcher(origin);
             if(matcher.find()) {
                 response.addHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, origin);
-                response.addHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_HEADERS, HttpHeaders.AUTHORIZATION);
-                response.addHeader(HttpHeaders.ACCESS_CONTROL_EXPOSE_HEADERS, HttpHeaders.AUTHORIZATION);
+                response.addHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_HEADERS, HttpHeaders.AUTHORIZATION + ", "
+                                                                             + HttpHeaders.CONTENT_TYPE);
+                response.addHeader(HttpHeaders.ACCESS_CONTROL_EXPOSE_HEADERS, HttpHeaders.AUTHORIZATION + ", "
+                                                                              + HttpHeaders.CONTENT_TYPE);
                 response.addHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_METHODS,
                                    "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH");
             }

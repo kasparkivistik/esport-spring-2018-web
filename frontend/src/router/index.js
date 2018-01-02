@@ -6,6 +6,7 @@ import Contact from '@/components/public/Contact';
 import Faq from '@/components/public/Faq';
 import Buy from '@/components/public/Buy';
 import TicketLogin from '@/components/TicketLogin';
+import MyTickets from '@/components/public/MyTickets';
 
 Vue.use(Router);
 
@@ -34,6 +35,11 @@ export default new Router({
           path: 'buy/:ticketId',
           name: 'Buy',
           component: Buy
+        },
+        {
+          path: 'myTickets',
+          name: 'MyTickets',
+          component: MyTickets
         }
       ]
     },
