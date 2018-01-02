@@ -31,10 +31,17 @@
     },
     "id": "ID",
     "name": "Nimi",
+    "type": "Tüüp",
     "status": "Staatus",
     "boughtOnDate": "Ostetud",
     "payByDate": "Maksta",
-    "price": "Hind"
+    "price": "Hind",
+    "statuses": {
+      "IN_WAITING_LIST": "Järjekorras",
+      "AWAITING_PAYMENT": "Ootab makset",
+      "PAID": "Makstud",
+      "CANCELED": "Tühistatud"
+    }
   },
   "home": {
     "sponsors": "Sponsorid"

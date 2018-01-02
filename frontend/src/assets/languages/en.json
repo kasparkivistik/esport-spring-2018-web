@@ -24,10 +24,17 @@
     "buy": "Buy",
     "id": "ID",
     "name": "Name",
+    "type": "Type",
     "status": "Status",
     "boughtOnDate": "Bought on",
     "payByDate": "Pay by",
-    "price": "Price"
+    "price": "Price",
+    "statuses": {
+      "IN_WAITING_LIST": "In waiting list",
+      "AWAITING_PAYMENT": "Awaiting payment",
+      "PAID": "Paid",
+      "CANCELED": "Canceled"
+    }
   },
   "home": {
     "sponsors": "Sponsors"

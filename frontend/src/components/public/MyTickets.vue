@@ -6,14 +6,16 @@
         tr
           th(v-t="'tickets.id'")
           th(v-t="'tickets.name'")
+          th(v-t="'tickets.type'")
           th(v-t="'tickets.status'")
           th(v-t="'tickets.boughtOnDate'")
           th(v-t="'tickets.price'")
       tbody
         tr(v-for="ticket in tickets")
           td {{ticket.id}}
-          td {{ticket.type.name}}
-          td {{ticket.status}}
+          td {{ticket.name}}
+          td {{ $t('tickets.names["' + ticket.type.name + '"]') }}
+          td {{ $t('tickets.statuses["' + ticket.status + '"]') }}
           td {{ticket.dateCreated | moment("Do MMMM") }}
           td {{ticket.type.cost}} €
 
