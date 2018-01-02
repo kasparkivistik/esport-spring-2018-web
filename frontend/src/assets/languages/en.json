@@ -2,7 +2,8 @@
   "moment": "en-gb",
   "navbar": {
     "home": "Home",
-    "contact": "Contact"
+    "contact": "Contact",
+    "faq": "FAQ"
   },
   "hero": {
     "date": "February 9.-11.",
@@ -22,6 +23,12 @@
     "pieces": "pc",
     "atLocation": "At location",
     "buy": "Buy",
+    "names": {
+      "CS:GO Team": "CS:GO Team",
+      "CS:GO VIP Team": "CS:GO VIP Team",
+      "Regular Gamer": "Regular Gamer",
+      "Spectator": "Spectator"
+    },
     "id": "ID",
     "name": "Name",
     "type": "Type",
@@ -45,5 +52,77 @@
     "organizers": "Organisers",
     "ituk": "Student Council of School of IT of TTU",
     "itukEmail": "contact@ituk.ee"
+  },
+  "faq": {
+    "faqLong": "Korduma kippuvad küsimused",
+    "questions": {
+      "1": {
+        "q": "Kuidas ma saan pileti eest tasuda?",
+        "a": "Pärast pileti broneerimist saadetakse Sulle e-mail koos vajaliku infoga. Pileti eest tuleb tasuda 3 tööpäeva jooksul. Terve meeskonna eest tasub meeskonna kapten."
+      },
+      "2": {
+        "q": "Millal on minu meeskonnale kohad garanteeritud?",
+        "a": "Kohad reserveeritakse kohe pärast broneeringu tegemist. Et need säilitada, peab raha jõudma 3 tööpäeva jooksul pärast broneerimist e-mailis näidatud kontole."
+      },
+      "3": {
+        "q": "Mida saan teha pealtvaataja piletiga?",
+        "a": "Pealtvaataja pilet tagab sulle ligipääsu saali ja meelelahutustele, mis ei vaja arvutit kogu ürituse vältel."
+      },
+      "4": {
+        "q": "Mida peaksin üritusele kaasa võtma?",
+        "a": "Arvuti koos kõige muu vajalikuga (monitor, hiir, klaviatuur) ja pikendusjuhtme."
+      },
+      "5": {
+        "q": "Mis mind kohapeal ootab?",
+        "a": "Lauapind ja tool, võrgukaabel, üks vooluvõtu koht. OMA PIKENDUSJUHE KAASA!"
+      },
+      "6": {
+        "q": "Kas üritusel on võimalik ööbida?",
+        "a": "Jah, üritusel on võimalik tasuta ööbida TTÜ ruumides, selleks võta kaasa madrats ja magamiskott."
+      },
+      "7": {
+        "q": "Mul ei ole meeskonda, kas saan osaleda ka üksinda?",
+        "a": "Üritusele on võimalik osta ka tavamängija pilet. CS:GO turniiril üksinda osaleda ei saa."
+      }
+    }
+  },
+  "buy": {
+    "buyTicket": "Buy a ticket",
+    "teamName": "Team name",
+    "name": "Name",
+    "email": "E-mail address",
+    "personalCode": "Personal ID code",
+    "connectWithSteam": "Connect with Steam",
+    "numberOfPlayers": "Nuber of players",
+    "pricePerPlayer": "Price per player",
+    "total": "Total",
+    "info": "Pilet broneeritakse pärast \"Osta pilet\" vajutamist. Pärast seda kuvatakse ning saadetakse emailile arve, mis tuleb tasuda 3 päeva jooksul. Pilet loetakse tasutuks kui raha on kandunud arves viidatud kontole. Pileti eest tasumise staatust on hiljem võimalik kontrollida sisse logides või kasutades emailis sisalduvat linki. Samuti saadetakse pileti kinnitamisel email.",
+    "success": {
+      "title": "Ticket bought!",
+      "text": "Check your e-mail!"
+    },
+    "fail": {
+      "title": "An error occured!",
+      "text": "Please try again later!"
+    },
+    "invoice": "Invoice",
+    "sentToMail": "The invoice has been sent to your e-mail",
+    "invoiceNumber": "Invoice number",
+    "date": "Date",
+    "ticket": "Ticket",
+    "vatInfo": "MTÜ FOR Tsükkel is not eligible for VAT under the Estonian Value-Added Tax Act and the fee does not include VAT.",
+    "payment": "Payment",
+    "bank": "Bank",
+    "receiver": "Receiver",
+    "description": "Description",
+    "paymentDue": "Payment due date",
+    "paymentInfo": "To confirm the ticket the payment must be received by the receiver in 3 days after receiving the invoice at the latest. Unpaid tickets will be discarded.",
+    "checkMail": "The invoice has been sent to your e-mail"
+  },
+  "login": {
+    "steam": {
+      "title": "Login successful!",
+      "text": "You are now connected with Steam!"
+    }
   }
 }

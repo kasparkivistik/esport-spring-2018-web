@@ -314,7 +314,7 @@
                                             <br>Kuupäev / Date: <span class="text-colored">$ticket.dateCreated.format($datePattern)</span>
                                             <br>Pilet / Ticket: <span class="text-colored">$ticket.type.name</span>
                                             #if($ticket.type.teamSize > 1)
-                                            <br>Ühe mängija hind / Price per player: <span class="text-colored">${ticket.type.perPersonCost}</span>
+                                            <br>Ühe mängija hind / Price per player: <span class="text-colored">${ticket.type.perPersonCost}€</span>
                                             <br>Mängijaid meeskonnas / Players in team: <span class="text-colored">$ticket.type.teamSize</span></p>
                                             #end
                                         <h3>Kokku / Total: <span class="text-colored">${ticket.type.cost}€</span></h3>
