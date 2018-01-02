@@ -10,6 +10,7 @@ public class Ticket {
 
     private int id;
     private TicketType type;
+    private String name;
 
     @Email
     private String ownerEmail;
