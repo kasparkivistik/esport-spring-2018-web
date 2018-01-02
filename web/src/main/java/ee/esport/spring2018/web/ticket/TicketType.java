@@ -17,6 +17,8 @@ public class TicketType {
     private OffsetDateTime availableFrom;
     private OffsetDateTime availableUntil;
     private Integer parentTicketTypeId;
+    private Integer teamSize;
+    private Integer atLocationCost;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<TicketType> promotions;
