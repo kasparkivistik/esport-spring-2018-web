@@ -1,5 +1,6 @@
 package ee.esport.spring2018.web.ticket;
 
+import ee.esport.spring2018.web.auth.EsportClaimsHolder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,10 @@ public class TicketController {
     }
 
     @PostMapping("/ticketType")
-    public ResponseEntity<Void> addTicketTypes(@RequestBody TicketType type) {
+    public ResponseEntity<Void> addTicketTypes(@RequestBody TicketType type, EsportClaimsHolder claimsHolder) {
+        if (!claimsHolder.get().isAdmin()) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
         ticketService.addType(type);
         return new ResponseEntity<>(HttpStatus.OK);
     }

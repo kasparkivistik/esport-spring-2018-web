@@ -1,14 +1,18 @@
 package ee.esport.spring2018.web.auth;
 
 import ee.esport.spring2018.web.ticket.TicketService;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("/api")
@@ -20,15 +24,36 @@ public class AuthController {
     @Resource
     private JwtService jwtService;
 
-    @GetMapping("/token/ticket/{loginLinkKey}")
-    public ResponseEntity<String> getTicketJwt(@PathVariable String loginLinkKey) {
+    @Resource
+    private SteamService steamService;
+
+    @GetMapping("/ticket/token/{loginLinkKey}")
+    public ResponseEntity<Void> getTicketJwt(@PathVariable String loginLinkKey) {
         Integer ticketId = ticketService.getLoginLinkTicketId(loginLinkKey);
         if (ticketId == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         EsportClaims claims = new EsportClaims().setTicketId(ticketId);
-        return new ResponseEntity<>(jwtService.createFromClaims(claims), HttpStatus.OK);
+        return new ResponseEntity<>(getAuthorizationHeaders(claims), HttpStatus.OK);
     }
 
+    private HttpHeaders getAuthorizationHeaders(EsportClaims claims) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add(HttpHeaders.AUTHORIZATION, "Bearer " + jwtService.createFromClaims(claims));
+        return headers;
+    }
+
+    @GetMapping("/steam/loginLink")
+    public ResponseEntity<String> getSteamLoginLink(@RequestParam String returnTo) {
+        return new ResponseEntity<>(steamService.getLoginUrl(returnTo), HttpStatus.OK);
+    }
+
+    @GetMapping("/steam/verify")
+    public ResponseEntity<Void> verifySteamLogin(HttpServletRequest request, HttpServletResponse response) {
+        SteamUser user = steamService.verifySteamLogin(request.getParameter("receivingUrl"),
+                                                       request.getParameterMap());
+        EsportClaims claims = new EsportClaims().setSteamUser(user);
+        return new ResponseEntity<>(getAuthorizationHeaders(claims), HttpStatus.OK);
+    }
 
 }

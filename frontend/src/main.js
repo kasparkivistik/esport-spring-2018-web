@@ -2,6 +2,9 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import router from './router';
+import VueResource from 'vue-resource';
+import VueConfig from 'vue-config';
+
 import Vuex from 'vuex';
 import * as VueGoogleMaps from 'vue2-google-maps';
 import i18n from './language';
@@ -37,6 +40,29 @@ Vue.use(VueAnalytics, {
 });
 
 Vue.use(Notifications);
+
+Vue.use(VueConfig, {
+  apiBase: 'http://localhost.e-sport.ee:8080',
+  steamLoginReturnTo: 'http://localhost.e-sport.ee:8083/static/verifySteamLogin.html'
+});
+
+Vue.use(VueResource);
+
+const AUTHORIZATION_HEADER = 'Authorization';
+const AUTH_TOKEN = 'authToken';
+Vue.http.interceptors.push((request, next) => {
+  let authToken = localStorage.getItem(AUTH_TOKEN);
+  if (authToken) {
+    request.headers.set(AUTHORIZATION_HEADER, authToken);
+  }
+  request.headers.set('Accept', 'application/json');
+  next(result => {
+    let authToken = result.headers.get(AUTHORIZATION_HEADER);
+    if (authToken) {
+      localStorage.setItem(AUTH_TOKEN, authToken);
+    }
+  });
+});
 
 /* eslint-disable no-new */
 new Vue({

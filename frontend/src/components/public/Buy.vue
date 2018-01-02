@@ -13,9 +13,7 @@
         label.control-label(v-t="'buy.personalCode'")
         input.form-control.input-lg
       .form-group
-        button.btn-sm.btn.btn-default.disabled
-          i.fa.fa-steam
-          |  {{ $t('buy.connectWithSteam') }}
+        steam-login
       blockquote.form-group
         p {{ $t('buy.numberOfPlayers') }}:
           span.text-primary  {{ ticket.teamSize }}
@@ -30,6 +28,7 @@
 </template>
 
 <script>
+  import SteamLogin from './SteamLogin.vue';
   export default {
     name: 'Buy',
     data () {
@@ -53,6 +52,9 @@
           ]
         }
       };
+    },
+    components: {
+      'steam-login': SteamLogin
     }
   };
 </script>
