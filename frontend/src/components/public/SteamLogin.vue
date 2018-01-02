@@ -1,7 +1,9 @@
 <template lang="pug">
-  button.btn-sm.btn.btn-default(v-bind:class="{ disabled: disabled }" v-on:click="startLogin")
+//-
+  button.btn-sm.btn.btn-default(:disabled="disabled" v-on:click="startLogin")
     i.fa.fa-steam
     |  {{ $t('buy.connectWithSteam') }}
+//
 </template>
 
 <script>
