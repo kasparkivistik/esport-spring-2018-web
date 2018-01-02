@@ -310,12 +310,12 @@
                                 <tr>
                                     <td>
                                         <h1>Arve / Invoice</h1>
-                                        <p>Arve number / Invoice number: <span class="text-colored">2018-359027-01</span>
-                                            <br>Kuupäev / Date: <span class="text-colored">04.02.2018</span>
-                                            <br>Pilet / Ticket: <span class="text-colored">CSGO Team (early bird)</span>
+                                        <p>Arve number / Invoice number: <span class="text-colored">$invoiceNumber</span>
+                                            <br>Kuupäev / Date: <span class="text-colored">$ticket.dateCreated.format($datePattern)</span>
+                                            <br>Pilet / Ticket: <span class="text-colored">$ticket.type.name</span>
                                             <br>Ühe mängija hind / Price per player: <span class="text-colored">15€</span>
                                             <br>Mängijaid meeskonnas / Players in team: <span class="text-colored">5</span></p>
-                                        <h3>Kokku / Total: <span class="text-colored">75€</span></h3>
+                                        <h3>Kokku / Total: <span class="text-colored">${ticket.type.cost}€</span></h3>
                                         <p class="text-small text-muted">MTÜ FOR Tsükkel ei ole käibemaksukohuslane Eesti Käibemaksuseaduse mõistes ja summa ei sisalda käibemaksu.</p>
                                         <p class="text-small text-muted">MTÜ FOR Tsükkel is not eligible for VAT under the Estonian Value-Added Tax Act and the fee does not include VAT.</p>
 
@@ -324,8 +324,8 @@
                                             <br>Saaja / Receiver: <span class="text-colored">MTÜ FOR Tsükkel</span>
                                             <br>IBAN: <span class="text-colored">EE617700771002582855</span>
                                             <br>SWIFT / BIC: <span class="text-colored">LHVBEE22</span>
-                                            <br>Selgitus / Description: <span class="text-colored">2018-359027-01</span>
-                                            <br>Makse tähtaeg / Payment due: <span class="text-colored">07.04.2018</span></p>
+                                            <br>Selgitus / Description: <span class="text-colored">$invoiceNumber</span>
+                                            <br>Makse tähtaeg / Payment due: <span class="text-colored">$payByDate.format($datePattern)</span></p>
                                         <p class="text-muted">Pileti kinnitamiseks peab olema raha kantud saaja kontole hiljemalt maksetähtaja kuupäeva lõpuks. Maksmata jätmisel pilet tühistatakse.</p>
                                         <p class="text-muted">To confirm the ticket the payment must be received by the receiver on the due date at the latest. Unpaid tickets will be discarded.</p>
                                         <table border="0" cellpadding="0" cellspacing="0" class="btn">
@@ -335,7 +335,7 @@
                                                     <table border="0" cellpadding="0" cellspacing="0">
                                                         <tbody>
                                                         <tr>
-                                                            <td> <a href="https://e-sport.ee">Minu piletid / My tickets</a> </td>
+                                                            <td> <a href="$loginLink">Minu piletid / My tickets</a> </td>
                                                         </tr>
                                                         </tbody>
                                                     </table>

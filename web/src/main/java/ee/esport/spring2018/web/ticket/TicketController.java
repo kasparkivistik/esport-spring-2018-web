@@ -1,6 +1,7 @@
 package ee.esport.spring2018.web.ticket;
 
 import ee.esport.spring2018.web.auth.EsportClaimsHolder;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -39,8 +41,9 @@ public class TicketController {
     }
 
     @PostMapping("/ticket")
-    public ResponseEntity<Void> buyTicket(@RequestBody Ticket ticket) {
-        ticketService.buyTicket(ticket);
+    public ResponseEntity<Void> buyTicket(@RequestBody Ticket ticket, HttpServletRequest request) {
+        String referrer = request.getHeader(HttpHeaders.REFERER);
+        ticketService.buyTicket(ticket, referrer != null ? referrer : request.getRequestURL().toString());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

@@ -4,6 +4,7 @@ import ee.esport.spring2018.web.email.EmailService;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.annotation.Resource;
 import java.time.OffsetDateTime;
@@ -32,13 +33,16 @@ public class TicketService {
     }
 
     @SneakyThrows //temporarily wait for emailService to finish sending email, just in case
-    public void buyTicket(Ticket ticket) {
+    public void buyTicket(Ticket ticket, String referrer) {
         ticket.setStatus(TicketStatus.AWAITING_PAYMENT);
         ticket.setDateCreated(OffsetDateTime.now());
-        int ticketId = ticketRepository.addTicket(ticket);
-        String loginLink = ticketRepository.createLoginLink(ticketId);
-        emailService.sendTicketReservation(ticket.getOwnerEmail(),
-                                           ticketRepository.getTicketType(ticket.getType().getId()),
+        ticket.setId(ticketRepository.addTicket(ticket));
+        ticket.setType(ticketRepository.getTicketType(ticket.getType().getId()));
+        String loginLinkKey = ticketRepository.createLoginLink(ticket.getId());
+        String loginLink = UriComponentsBuilder.fromUriString(referrer)
+                                               .replacePath("/ticketLogin/" + loginLinkKey)
+                                               .toUriString();
+        emailService.sendTicketReservation(ticket,
                                            loginLink).get();
     }
 
