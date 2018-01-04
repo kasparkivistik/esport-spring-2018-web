@@ -12,13 +12,14 @@ public class TicketType {
 
     private int Id;
     private String name;
-    private int amountAvailable;
+    private Integer amountAvailable;
     private BigDecimal cost;
     private OffsetDateTime availableFrom;
     private OffsetDateTime availableUntil;
     private Integer parentTicketTypeId;
     private Integer teamSize;
     private Integer atLocationCost;
+    private int amountReserved;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<TicketType> promotions;

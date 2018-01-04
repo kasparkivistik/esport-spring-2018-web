@@ -9,10 +9,10 @@ import javax.annotation.Resource;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-import static ee.esport.spring2018.jooq.Tables.TICKETS;
-import static ee.esport.spring2018.jooq.Tables.TICKET_LOGIN_LINKS;
-import static ee.esport.spring2018.jooq.Tables.TICKET_TYPES;
+import static ee.esport.spring2018.jooq.Tables.*;
+import static org.jooq.impl.DSL.count;
 
 @Service
 public class TicketRepository {
@@ -29,8 +29,22 @@ public class TicketRepository {
     public List<TicketType> getAllTypes() {
         return withRelationsRelations(getAllTicketTypesFlat()).stream()
                                                               .filter(type -> type.getParentTicketTypeId() == null)
+                                                              .map(this::fixAmountReserved)
                                                               .collect(Collectors.toList());
     }
+
+    private TicketType fixAmountReserved(TicketType type) {
+        if (type.getPromotions() == null) {
+            return type;
+        }
+        type.getPromotions().forEach(this::fixAmountReserved);
+        type.setAmountReserved(type.getAmountReserved() + type.getPromotions()
+                                                                .stream()
+                                                                .mapToInt(TicketType::getAmountReserved)
+                                                                .sum());
+        return type;
+    }
+
 
     private List<TicketType> withRelationsRelations(List<TicketType> ticketTypes) {
         Map<Integer, TicketType> typesById = ticketTypes.stream()
@@ -45,12 +59,21 @@ public class TicketRepository {
                        }
                        parentType.getPromotions().add(type);
                    });
+
         return ticketTypes;
     }
 
     private List<TicketType> getAllTicketTypesFlat() {
-        return dsl.select()
+        return dsl.select(Stream.concat(Arrays.stream(TICKET_TYPES.fields()),
+                                        Stream.of(count(TICKETS).as("amountReserved")))
+                                .collect(Collectors.toList()))
                   .from(TICKET_TYPES)
+                  .leftJoin(TICKETS)
+                  .onKey()
+                  .where(TICKETS.STATUS.in(Arrays.asList(TicketStatus.IN_WAITING_LIST,
+                                                         TicketStatus.AWAITING_PAYMENT,
+                                                         TicketStatus.PAID)))
+                  .groupBy(TICKET_TYPES.ID)
                   .fetchInto(TicketType.class);
     }
 

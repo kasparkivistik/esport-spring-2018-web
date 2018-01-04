@@ -52,7 +52,7 @@ public class JwtService {
             claims.setAdmin(true);
         }
         return new DefaultJwtBuilder().setClaims(claims)
-                                      .setExpiration(asLegacyDate(now.plusHours(24)))
+                                      .setExpiration(asLegacyDate(now.plusDays(7)))
                                       .setIssuedAt(asLegacyDate(now))
                                       .setIssuer(ISSUER)
                                       .signWith(algorithm, key)

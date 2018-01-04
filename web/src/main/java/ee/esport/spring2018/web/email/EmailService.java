@@ -28,8 +28,7 @@ public class EmailService {
     private final VelocityEngine velocityEngine;
 
     public CompletableFuture<Response> sendTicketReservation(Ticket ticket, String loginLink) {
-        VelocityContext context = new VelocityContext();
-        context.put("datePattern", DATE_PATTERN);
+        VelocityContext context = createContext();
         context.put("ticket", ticket);
         context.put("loginLink", loginLink);
         context.put("invoiceNumber",
@@ -41,6 +40,22 @@ public class EmailService {
                          .subject("Pilet reserveeritud / Ticket Reserved")
                          .html(renderEmail("ticketReserved", context))
                          .build();
+        return sendAsync(mail);
+    }
+
+    public CompletableFuture<Response> sendTicketWaiting(Ticket ticket, String loginLink) {
+        VelocityContext context = createContext();
+        context.put("ticket", ticket);
+        context.put("loginLink", loginLink);
+        context.put("invoiceNumber",
+                    "2018-359027-" + "000".substring(Integer.toString(ticket.getId()).length()) + ticket.getId());
+        context.put("payByDate",
+                    OffsetDateTime.ofInstant(ticket.getDateCreated().plusDays(3).toInstant(), ZoneId.systemDefault()));
+        Mail mail = Mail.using(mailgunConfig)
+                        .to(ticket.getOwnerEmail())
+                        .subject("Pilet ootel / Ticket In Waiting List ")
+                        .html(renderEmail("ticketWaiting", context))
+                        .build();
         return sendAsync(mail);
     }
 
@@ -70,4 +85,9 @@ public class EmailService {
         }
     }
 
+    private VelocityContext createContext() {
+        VelocityContext context = new VelocityContext();
+        context.put("datePattern", DATE_PATTERN);
+        return context;
+    }
 }

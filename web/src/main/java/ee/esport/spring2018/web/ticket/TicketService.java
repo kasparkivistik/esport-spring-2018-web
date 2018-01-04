@@ -33,18 +33,25 @@ public class TicketService {
     }
 
     @SneakyThrows //temporarily wait for emailService to finish sending email, just in case
-    public void buyTicket(Ticket ticket, String referrer) {
-        ticket.setStatus(TicketStatus.AWAITING_PAYMENT);
+    public Ticket buyTicket(Ticket ticket, String referrer) {
         ticket.setDateCreated(OffsetDateTime.now());
+        TicketType type = ticketRepository.getTicketType(ticket.getType().getId());
+        boolean isTicketAvailable = type.getAmountAvailable() == 0 || type.getAmountAvailable() > type.getAmountReserved();
+        ticket.setStatus(isTicketAvailable ? TicketStatus.AWAITING_PAYMENT :
+                                             TicketStatus.IN_WAITING_LIST);
         ticket.setId(ticketRepository.addTicket(ticket));
-        ticket.setType(ticketRepository.getTicketType(ticket.getType().getId()));
+        ticket.setType(type);
         String loginLinkKey = ticketRepository.createLoginLink(ticket.getId());
         String loginLink = UriComponentsBuilder.fromUriString(referrer)
                                                .replacePath("/")
                                                .fragment("/ticketLogin/" + loginLinkKey)
                                                .toUriString();
-        emailService.sendTicketReservation(ticket,
-                                           loginLink).get();
+        if(ticket.getStatus() == TicketStatus.AWAITING_PAYMENT) {
+            emailService.sendTicketReservation(ticket, loginLink).get();
+        } else {
+            emailService.sendTicketWaiting(ticket, loginLink).get();
+        }
+        return ticket;
     }
 
     public Integer getLoginLinkTicketId(String key) {

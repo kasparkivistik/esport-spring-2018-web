@@ -62,13 +62,14 @@ public class TicketController {
     }
 
     @PostMapping("/ticket")
-    public ResponseEntity<Void> buyTicket(@RequestBody Ticket ticket, EsportClaimsHolder claimsHolder,
+    public ResponseEntity<Ticket> buyTicket(@RequestBody Ticket ticket, EsportClaimsHolder claimsHolder,
                                           HttpServletRequest request) {
         String referrer = request.getHeader(HttpHeaders.REFERER);
         SteamUser steamUser = claimsHolder.get().getSteamUser();
         ticket.setOwnerSteamId(steamUser != null ? steamUser.getId() : null);
-        ticketService.buyTicket(ticket, referrer != null ? referrer : request.getRequestURL().toString());
-        return new ResponseEntity<>(HttpStatus.OK);
+        Ticket boughtTicket = ticketService.buyTicket(ticket, referrer != null ? referrer :
+                                                                                 request.getRequestURL().toString());
+        return new ResponseEntity<>(boughtTicket, HttpStatus.OK);
     }
 
 }
