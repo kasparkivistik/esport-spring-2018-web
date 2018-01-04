@@ -310,7 +310,7 @@
                                 <tr>
                                     <td>
                                         <h1>Ootel / Waiting</h1>
-                                        <h2>Chuck Norris</h2>
+                                        <h2>$ticket.name</h2>
                                         <p>Olete lisatud ootelisti. Kui koht vabaneb, saadetakse Sulle automaatselt pileti arve.</p>
                                         <p>You have been added to the waiting list. If a spot frees up, an invoice will automatically be sent to You.</p>
                                         <p>
@@ -324,7 +324,7 @@
                                                     <table border="0" cellpadding="0" cellspacing="0">
                                                         <tbody>
                                                         <tr>
-                                                            <td> <a href="https://e-sport.ee">Minu piletid / My tickets</a> </td>
+                                                            <td> <a href="$loginLink">Minu piletid / My tickets</a> </td>
                                                         </tr>
                                                         </tbody>
                                                     </table>
