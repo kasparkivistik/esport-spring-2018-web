@@ -31,7 +31,7 @@
               p.ticket-description(v-bind:class="ticket.promotions != null? 'has-promotion' : ''")
                 | {{ $t('tickets.availableUntil') }}
                 |  {{ ticket.availableUntil | moment("Do MMMM") }}
-              p.ticket-remaining.text-lead(v-if="ticket.amountAvailable != null")  {{ ticket.amountAvailable }}
+              // p.ticket-remaining.text-lead(v-if="ticket.amountAvailable != null")  {{ ticket.amountAvailable }}
                 span(v-if="ticket.teamSize > 1")  {{ $t('tickets.teams') }}
                 span(v-else)  {{ $t('tickets.pieces') }}
               p.ticket-at-location-cost(v-if="ticket.atLocationCost != null") {{ $t('tickets.atLocation') }}
