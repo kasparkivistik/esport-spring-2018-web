@@ -28,7 +28,7 @@
       "CS:GO Team Early Bird": "CS:GO meeskond",
       "CS:GO VIP Team": "CS:GO VIP meeskond",
       "Regular Gamer": "Tavamängija",
-      "Regular Gamer Early Bird": "Tavamängija",
+      "Regular Gamer Early Bird": "Tavamängija ",
       "Spectator": "Pealtvaataja"
     },
     "id": "ID",
@@ -85,6 +85,12 @@
       "7": {
         "q": "Mul ei ole meeskonda, kas saan osaleda ka üksinda?",
         "a": "Üritusele on võimalik osta ka tavamängija pilet. CS:GO turniiril üksinda osaleda ei saa."
+      },
+      "8": {
+        "q": "Kas alaealised saavad ka üritusel osaleda?",
+        "a": "Jah, kuid alla 16 aasta vanustel tuleb lasta täita",
+        "parentalPermit": "lapsevanema luba",
+        "file": "lapsevanema_luba.pdf"
       }
     }
   },

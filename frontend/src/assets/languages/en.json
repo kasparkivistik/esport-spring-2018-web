@@ -25,8 +25,10 @@
     "buy": "Buy",
     "names": {
       "CS:GO Team": "CS:GO Team",
+      "CS:GO Team Early Bird": "CS:GO Team",
       "CS:GO VIP Team": "CS:GO VIP Team",
       "Regular Gamer": "Regular Gamer",
+      "Regular Gamer Early Bird": "Regular Gamer",
       "Spectator": "Spectator"
     },
     "id": "ID",
@@ -54,35 +56,41 @@
     "itukEmail": "contact@ituk.ee"
   },
   "faq": {
-    "faqLong": "Korduma kippuvad küsimused",
+    "faqLong": "Frequently Asked Questions",
     "questions": {
       "1": {
-        "q": "Kuidas ma saan pileti eest tasuda?",
-        "a": "Pärast pileti broneerimist saadetakse Sulle e-mail koos vajaliku infoga. Pileti eest tuleb tasuda 3 tööpäeva jooksul. Terve meeskonna eest tasub meeskonna kapten."
+        "q": "How can I pay for my ticket?",
+        "a": "After reserving the ticket, an email will be sent to You with all the necessary information. The ticket has to be payed for in 3 workdays. Team captain will pay for the whole team."
       },
       "2": {
-        "q": "Millal on minu meeskonnale kohad garanteeritud?",
-        "a": "Kohad reserveeritakse kohe pärast broneeringu tegemist. Et need säilitada, peab raha jõudma 3 tööpäeva jooksul pärast broneerimist e-mailis näidatud kontole."
+        "q": "When is my spot confirmed?",
+        "a": "Your spot will be reserved right after making Your reservation. To keep Your spot, the transfer to the bank account in the email has to be made in 3 workdays."
       },
       "3": {
-        "q": "Mida saan teha pealtvaataja piletiga?",
-        "a": "Pealtvaataja pilet tagab sulle ligipääsu saali ja meelelahutustele, mis ei vaja arvutit kogu ürituse vältel."
+        "q": "What can I do with a spectator ticket?",
+        "a": "The spectator ticket will grant You access to the hall and entertainment that doesn't require Your own PC."
       },
       "4": {
-        "q": "Mida peaksin üritusele kaasa võtma?",
-        "a": "Arvuti koos kõige muu vajalikuga (monitor, hiir, klaviatuur) ja pikendusjuhtme."
+        "q": "What do I have to bring?",
+        "a": "Your PC with all the necessary gear (monitor, mouse, keyboard, etc.) and an extension cord."
       },
       "5": {
-        "q": "Mis mind kohapeal ootab?",
-        "a": "Lauapind ja tool, võrgukaabel, üks vooluvõtu koht. OMA PIKENDUSJUHE KAASA!"
+        "q": "What will be provided at the location?",
+        "a": "Deskspace, a chair, a network cable and one power socket. BRING YOUR OWN EXTENSION CORD!"
       },
       "6": {
-        "q": "Kas üritusel on võimalik ööbida?",
-        "a": "Jah, üritusel on võimalik tasuta ööbida TTÜ ruumides, selleks võta kaasa madrats ja magamiskott."
+        "q": "Can I sleep at the location during the event?",
+        "a": "Yes, you can sleep in designated TTÜ rooms. Bring a matt and a sleeping bag."
       },
       "7": {
-        "q": "Mul ei ole meeskonda, kas saan osaleda ka üksinda?",
-        "a": "Üritusele on võimalik osta ka tavamängija pilet. CS:GO turniiril üksinda osaleda ei saa."
+        "q": "I don't have a team, can I join alone?",
+        "a": "You can get a regular gamer ticket. It only prevents you from participating in the CS:GO tournament."
+      },
+      "8": {
+        "q": "Can underaged people attend??",
+        "a": "Yes, but everyone younger than 16 have to fill",
+        "parentalPermit": "the parental permit",
+        "file": "parental_permit.pdf"
       }
     }
   },
