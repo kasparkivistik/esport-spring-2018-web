@@ -14,6 +14,7 @@
             li: router-link(:to="{ name: 'Home' }") {{ $t('navbar.home') }}
             li: router-link(:to="{ name: 'Contact' }") {{ $t('navbar.contact') }}
             li: router-link(:to="{ name: 'Faq' }") {{ $t('navbar.faq') }}
+            li: a(href="https://discord.gg/W5Psxu3") Discord
             li: a(href="#", v-on:click.stop.prevent="setLanguage('en')" v-if="getLanguage != 'en'"): strong EN
             li: a(href="#", v-on:click.stop.prevent="setLanguage('et')" v-if="getLanguage != 'et'"): strong ET
     router-view.view
