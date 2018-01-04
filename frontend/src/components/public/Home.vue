@@ -6,7 +6,6 @@
               h1: strong(v-t="'hero.date'")
               h2(v-t="'hero.game'")
               h2(v-t="'hero.teams'")
-              h1(v-t="'hero.ticketsSoon'")
     .container.content-block
       h1.text-center(v-t="'tickets.tickets'")
       .text-center.center-content(v-if="$parent.tickets == null")
