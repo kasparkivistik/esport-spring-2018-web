@@ -69,10 +69,10 @@ public class TicketRepository {
                                 .collect(Collectors.toList()))
                   .from(TICKET_TYPES)
                   .leftJoin(TICKETS)
-                  .onKey()
-                  .where(TICKETS.STATUS.in(Arrays.asList(TicketStatus.IN_WAITING_LIST,
-                                                         TicketStatus.AWAITING_PAYMENT,
-                                                         TicketStatus.PAID)))
+                  .on(TICKET_TYPES.ID.eq(TICKETS.TYPE_ID)
+                                     .and(TICKETS.STATUS.in(Arrays.asList(TicketStatus.IN_WAITING_LIST,
+                                                                          TicketStatus.AWAITING_PAYMENT,
+                                                                          TicketStatus.PAID))))
                   .groupBy(TICKET_TYPES.ID)
                   .fetchInto(TicketType.class);
     }
