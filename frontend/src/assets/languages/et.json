@@ -25,8 +25,10 @@
     "buy": "Osta",
     "names": {
       "CS:GO Team": "CS:GO meeskond",
+      "CS:GO Team Early Bird": "CS:GO meeskond",
       "CS:GO VIP Team": "CS:GO VIP meeskond",
       "Regular Gamer": "Tavamängija",
+      "Regular Gamer Early Bird": "Tavamängija",
       "Spectator": "Pealtvaataja"
     },
     "id": "ID",
