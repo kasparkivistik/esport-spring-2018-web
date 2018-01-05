@@ -60,15 +60,15 @@
     "questions": {
       "1": {
         "q": "How can I pay for my ticket?",
-        "a": "After reserving the ticket, an email will be sent to You with all the necessary information. The ticket has to be payed for in 3 workdays. Team captain will pay for the whole team."
+        "a": "After reserving the ticket, an email will be sent to you with all the necessary information. The ticket has to be paid for in 3 workdays. The team captain will pay for the whole team."
       },
       "2": {
         "q": "When is my spot confirmed?",
-        "a": "Your spot will be reserved right after making Your reservation. To keep Your spot, the transfer to the bank account in the email has to be made in 3 workdays."
+        "a": "Your spot will be reserved right after making your reservation. To keep your spot, the transfer to the bank account in the email must be made in 3 workdays."
       },
       "3": {
         "q": "What can I do with a spectator ticket?",
-        "a": "The spectator ticket will grant You access to the hall and entertainment that doesn't require Your own PC."
+        "a": "The spectator ticket will grant you access to the hall and to the entertainment area that doesn't require your own PC."
       },
       "4": {
         "q": "What do I have to bring?",
@@ -88,7 +88,7 @@
       },
       "8": {
         "q": "Can underaged people attend??",
-        "a": "Yes, but everyone younger than 16 have to fill",
+        "a": "Yes, but everyone under 16 have to fill",
         "parentalPermit": "the parental permit",
         "file": "parental_permit.pdf"
       }
@@ -101,7 +101,7 @@
     "email": "E-mail address",
     "personalCode": "Personal ID code",
     "connectWithSteam": "Connect with Steam",
-    "numberOfPlayers": "Nuber of players",
+    "numberOfPlayers": "Number of players",
     "pricePerPlayer": "Price per player",
     "total": "Total",
     "info": "Pilet broneeritakse pärast \"Osta pilet\" vajutamist. Pärast seda kuvatakse ning saadetakse emailile arve, mis tuleb tasuda 3 päeva jooksul. Pilet loetakse tasutuks kui raha on kandunud arves viidatud kontole. Pileti eest tasumise staatust on hiljem võimalik kontrollida sisse logides või kasutades emailis sisalduvat linki. Samuti saadetakse pileti kinnitamisel email.",
@@ -118,13 +118,13 @@
     "invoiceNumber": "Invoice number",
     "date": "Date",
     "ticket": "Ticket",
-    "vatInfo": "MTÜ FOR Tsükkel is not eligible for VAT under the Estonian Value-Added Tax Act and the fee does not include VAT.",
+    "vatInfo": "MTÜ FOR Tsükkel is not eligible for Value-Added Tax under the Estonian VAT Act and the fee does not include VAT.",
     "payment": "Payment",
     "bank": "Bank",
     "receiver": "Receiver",
     "description": "Description",
     "paymentDue": "Payment due date",
-    "paymentInfo": "To confirm the ticket the payment must be received by the receiver in 3 days after receiving the invoice at the latest. Unpaid tickets will be discarded.",
+    "paymentInfo": "To confirm the ticket, the payment transaction must be done within 3 days after receiving the invoice at the latest. Unpaid tickets will be discarded.",
     "checkMail": "The invoice has been sent to your e-mail"
   },
   "login": {
