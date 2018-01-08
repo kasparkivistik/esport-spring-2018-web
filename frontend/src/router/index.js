@@ -8,6 +8,7 @@ import Buy from '@/components/public/Buy';
 import TicketLogin from '@/components/TicketLogin';
 import MyTickets from '@/components/public/MyTickets';
 import Schedule from '@/components/public/Schedule';
+import HouseRules from '@/components/public/HouseRules';
 
 Vue.use(Router);
 
@@ -36,6 +37,11 @@ export default new Router({
           path: 'schedule',
           name: 'Schedule',
           component: Schedule
+        },
+        {
+          path: 'houseRules',
+          name: 'HouseRules',
+          component: HouseRules
         },
         {
           path: 'buy/:ticketId',
