@@ -36,7 +36,8 @@ Vue.use(require('vue-moment'), {
 });
 
 Vue.use(VueAnalytics, {
-  id: 'UA-111484189-1'
+  id: 'UA-111484189-1',
+  router
 });
 
 Vue.use(Notifications);

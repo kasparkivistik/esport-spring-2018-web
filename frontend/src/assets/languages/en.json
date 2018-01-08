@@ -3,7 +3,9 @@
   "navbar": {
     "home": "Home",
     "contact": "Contact",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "timetable": "Schedule",
+    "houseRules": "House Rules"
   },
   "hero": {
     "date": "February 9.-11.",
@@ -12,6 +14,8 @@
     "ticketsSoon": "Tickets available soon!"
   },
   "tickets": {
+    "notifyMe": "Notify me!",
+    "outOfTickets": "All these tickets are currently reserved, but you can enter the waiting list and we will let you know if a spot opens up!",
     "tickets": "Tickets",
     "perPerson": "/person",
     "perPersonShort": "/per",
@@ -132,5 +136,34 @@
       "title": "Login successful!",
       "text": "You are now connected with Steam!"
     }
+  },
+  "schedule": {
+    "days": [
+      {
+        "title": "Friday, February 9rd",
+        "times": {
+          "18:00": "Doors open",
+          "20:00": "CS:GO group-phase begins",
+          "01:00-07:00": "Rest"
+        }
+      },
+      {
+        "title": "Saturday, February 10th",
+        "times": {
+          "10:00-14:00": "CS:GO tournament continues",
+          "14:00-15:00": "Lunch-break",
+          "15:00-20:00": "CS:GO tournament continues",
+          "20:00-00:00": "CS:GO tournament semi-finals"
+        }
+      },
+      {
+        "title": "Sunday, February 11th",
+        "times": {
+          "10:00-13:00": "CS:GO tournament 3rd place games and finals",
+          "14:00-15:00": "Awards ceremony",
+          "15:00": "Lights out"
+        }
+      }
+    ]
   }
 }

@@ -7,6 +7,7 @@ import Faq from '@/components/public/Faq';
 import Buy from '@/components/public/Buy';
 import TicketLogin from '@/components/TicketLogin';
 import MyTickets from '@/components/public/MyTickets';
+import Schedule from '@/components/public/Schedule';
 
 Vue.use(Router);
 
@@ -30,6 +31,11 @@ export default new Router({
           path: 'faq',
           name: 'Faq',
           component: Faq
+        },
+        {
+          path: 'schedule',
+          name: 'Schedule',
+          component: Schedule
         },
         {
           path: 'buy/:ticketId',
