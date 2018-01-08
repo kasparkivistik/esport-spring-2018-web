@@ -168,11 +168,11 @@
   },
   "houseRules": {
     "notPermitted": "Keelatud on",
-    "afterRules": "NB! Reeglite rikkumise puhul on korraldajatel õigus mängija (koos tema meeskonnaga) eemaldada ja rakendada edasist keelu TTÜ e-Spordi üritustelt.",
+    "afterRules": "NB! Reeglite rikkumise puhul on korraldajatel õigus mängija (koos tema meeskonnaga) eemaldada ja rakendada edasist keeldu TTÜ e-Spordi üritustelt.",
     "rules": [{
       "alkoholi ja uimastite omamine ja tarbimine ürituse vältel": null,
       "alkoholijoobes või uimasite mõju all viibimine üritusel": null,
-      "suitsetamine (ka e-sigaret) seleks mitte ettenähtud kohtades - suitsetada võib suitsuruumis või õues vastava prügikasti juures": null,
+      "suitsetamine (ka e-sigaret) selleks mitte ettenähtud kohtades - suitsetada võib suitsuruumis või õues vastava prügikasti juures": null,
       "keelatud on": [
         "suitsetamine alaealistel",
         "mokatubaka kasutamine TTÜ territooriumil"
@@ -185,7 +185,7 @@
       "iga külastaja vastutab enda asjade ja vara eest ise": null,
       "korraldajale varalise kahju tekitanud külastaja on kohustatud korvama täies ulatuses tekitatud kahju": null,
       "magamiseks ettenähtud ajal ja magamiseks ettenähtud ruumis tuleb olla vaikselt ja võimaldada kaasmängijatel magada": null,
-      "korraldajad ei vastuta külastajate ees": null,
+      "korraldajad ei vastuta külastajate eest": null,
       "mängijad on TTÜ e-Spordil kohustatud kinni pidama mängule seatud vanusepiirangutest": null
     }]
   }

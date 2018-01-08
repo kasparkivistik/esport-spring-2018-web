@@ -64,15 +64,15 @@
     "questions": {
       "1": {
         "q": "How can I pay for my ticket?",
-        "a": "After reserving the ticket, an email will be sent to You with all the necessary information. The ticket has to be payed for in 3 workdays. Team captain will pay for the whole team."
+        "a": "After reserving the ticket, an email will be sent to you with all the necessary information. The ticket has to be payed for in 3 workdays. Team captain will pay for the whole team."
       },
       "2": {
         "q": "When is my spot confirmed?",
-        "a": "Your spot will be reserved right after making Your reservation. To keep Your spot, the transfer to the bank account in the email has to be made in 3 workdays."
+        "a": "Your spot will be reserved right after making your reservation. To keep your spot, the transfer to the bank account in the email has to be made in 3 workdays."
       },
       "3": {
         "q": "What can I do with a spectator ticket?",
-        "a": "The spectator ticket will grant You access to the hall and entertainment that doesn't require Your own PC."
+        "a": "The spectator ticket will grant you access to the hall and entertainment that doesn't require your own PC."
       },
       "4": {
         "q": "What do I have to bring?",
@@ -167,6 +167,26 @@
     ]
   },
   "houseRules": {
-    "": null
+    "notPermitted": "Participants are not allowed to",
+    "afterRules": "NB! The staff have the right to remove any participant (with his/her team) from the event and ban them from participating in the future.",
+    "rules": [{
+      "Drinking alcohol or using narcotics during the event": null,
+      "Being under the influence of alcohol or narcotics": null,
+      "Smoking (also using an e-cigarette) anywhere but in a smoking room or outside near a bin": null,
+      "It is forbidden to:": [
+        "Smoke while underaged",
+        "Using snus on the territory of TTÜ"
+      ],
+      "Using force on others or belongings of others": null,
+      "Using/touching belongings of others without permission": null,
+      "Breaking the rules of a tournament": null,
+      "Touching the infrastructure - any problems with infrastructure shall be reported to staff": null,
+      "Plugging in unnecessary electronical appliances that are not needed for gaming (electric kettle, toaster, Tesla charger)": null,
+      "Every participant is responsible of their own belongings": null,
+      "Any physical damage caused must be fully compensated": null,
+      "Preventing others from sleeping in the sleeping area": null,
+      "Staff is not responsible for any actions of any participant": null,
+      "Not complying with age-limits on games": null
+    }]
   }
 }

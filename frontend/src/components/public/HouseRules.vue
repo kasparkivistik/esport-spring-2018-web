@@ -7,7 +7,7 @@
         li.rule {{ rule }}
         ul(v-if="subrules != null" v-for="subrule in subrules")
           li.rule.subrule {{ subrule }}
-      p.text-primary {{ $t('houseRules.afterRules') }}
+      p {{ $t('houseRules.afterRules') }}
 </template>
 
 <script>
