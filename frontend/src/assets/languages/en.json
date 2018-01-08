@@ -94,7 +94,7 @@
         "q": "Can underaged people attend??",
         "a": "Yes, but everyone younger than 16 have to fill",
         "parentalPermit": "the parental permit",
-        "file": "parental_permit.pdf"
+        "file": "https://esport.ituk.ee/parental_permit.pdf"
       }
     }
   },

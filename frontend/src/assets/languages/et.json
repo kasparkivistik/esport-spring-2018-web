@@ -94,7 +94,7 @@
         "q": "Kas alaealised saavad ka üritusel osaleda?",
         "a": "Jah, kuid alla 16 aasta vanustel tuleb lasta täita",
         "parentalPermit": "lapsevanema luba",
-        "file": "lapsevanema_luba.pdf"
+        "file": "https://esport.ituk.ee/lapsevanema_luba.pdf"
       }
     }
   },
