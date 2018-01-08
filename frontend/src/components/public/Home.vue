@@ -60,7 +60,7 @@
         .col-xs-4.col-sm-3: a(target="_blank" href="https://boom-esports.org/"): img(src="../../assets/sponsors/boommedia.png")
         .col-xs-4.col-sm-3: a(target="_blank" href="https://filmiklubi.ee/"): img(src="../../assets/sponsors/filmiklubi-03.svg")
         .col-xs-4.col-sm-3: a(target="_blank" href="https://www.monsterenergy.com/"): img(src="../../assets/sponsors/monster-02.svg")
-        .col-xs-4.col-sm-3: a(target="_blank" href="http://www.tomorrow.ee/"): img(src="../../assets/sponsors/network_tomorrow.png")
+        .col-xs-4.col-sm-3: a(target="_blank" href="http://www.tomorrow.ee/"): img(src="../../assets/sponsors/nt-logo.svg")
         .col-xs-4.col-sm-3: a(target="_blank" href="https://www.academichostel.com"): img(src="../../assets/sponsors/academic_hostel.svg")
         .col-xs-4.col-sm-3: a(target="_blank" href="http://www.bytelife.com/"): img(src="../../assets/sponsors/bytelife.png")
         .col-xs-4.col-sm-3: a(target="_blank" href="http://www.exitroom.ee/"): img(src="../../assets/sponsors/exit_room.jpg")
